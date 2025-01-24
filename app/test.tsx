@@ -1,4 +1,7 @@
 const TestComponent = () => {
+  const testelement = [2, 3, 4];
+  console.log(testelement);
+
   return (
     <div>
       <p>
