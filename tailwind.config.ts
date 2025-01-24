@@ -12,8 +12,13 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        manrope: ['Manrope', 'sans-serif'],
+        spaceMono: ['Space Mono', 'monospace'],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
