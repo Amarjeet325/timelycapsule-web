@@ -13,12 +13,13 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        manrope: ['Manrope', 'sans-serif'],
-        spaceMono: ['Space Mono', 'monospace'],
+        manrope: ["Manrope", "sans-serif"],
+        spaceMono: ["Space Mono", "monospace"],
       },
     },
   },
   plugins: [],
+  darkMode: "class",
 };
 
 export default config;
