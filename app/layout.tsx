@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Manrope, Space_Mono } from "next/font/google";
+import SessionProvider from "./providers/SessionProvider";
 import { ReduxProvider } from "./_providers/ReduxProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const space_Mono = Space_Mono({
+  style: "normal",
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-space-mono",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
   description: "Your digital time capsule",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -28,11 +31,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${manrope.variable} ${space_Mono.variable} antialiased`}
       >
+
+        <SessionProvider>
         <ReduxProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </ReduxProvider>
+        </SessionProvider>
       </body>
     </html>
   );
