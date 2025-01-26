@@ -13,8 +13,8 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        manrope: ["Manrope", "sans-serif"],
-        spaceMono: ["Space Mono", "monospace"],
+        manrope: ["var(--font-manrope)"],
+        spaceMono: ["var(--font-space-mono)"],
       },
     },
   },
