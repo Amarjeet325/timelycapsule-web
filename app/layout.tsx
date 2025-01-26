@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import type { Metadata } from "next";
 import { Manrope, Space_Mono } from "next/font/google";
-import SessionProvider from "./providers/SessionProvider";
 import { ReduxProvider } from "./_providers/ReduxProvider";
+import "./globals.css";
+import SessionProvider from "./providers/SessionProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -33,11 +33,10 @@ export default async function RootLayout({
       <body
         className={`${manrope.variable} ${space_Mono.variable} antialiased`}
       >
-
         <SessionProvider>
-        <ReduxProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </ReduxProvider>
+          <ReduxProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </ReduxProvider>
         </SessionProvider>
       </body>
     </html>
