@@ -1,6 +1,5 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -17,13 +16,21 @@ export const authOptions: AuthOptions = {
         ) {
           return { id: "1", email: credentials.email };
         }
+        if (
+          credentials?.email === "admin@example.com" &&
+          credentials?.password === "password"
+        ) {
+          return { id: "1", email: credentials.email, isAdmin: true };
+        }
+
         return null;
       },
     }),
   ],
 
   pages: {
-    signIn: "/login",
+    signIn: "/enter",
+    error: "/error",
   },
 
   session: {
