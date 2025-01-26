@@ -14,7 +14,7 @@ export const authOptions: AuthOptions = {
           credentials?.email === "user@example.com" &&
           credentials?.password === "password"
         ) {
-          return { id: "1", email: credentials.email };
+          return { id: "1", email: credentials.email, isAdmin: false };
         }
         if (
           credentials?.email === "admin@example.com" &&
@@ -35,6 +35,11 @@ export const authOptions: AuthOptions = {
 
   session: {
     strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
   },
 };
 
