@@ -5,13 +5,11 @@ import {
   UseMutationOptions,
 } from "@tanstack/react-query";
 
-// Type for API error responses
 export interface ApiError {
   message: string;
   status: number;
 }
 
-// Generic fetch wrapper with typing
 export async function fetchData<T>(
   url: string,
   options?: RequestInit,
@@ -26,7 +24,6 @@ export async function fetchData<T>(
   return response.json();
 }
 
-// Custom hook for data fetching
 export function useCustomQuery<T>(
   queryKey: string[],
   fetchFn: () => Promise<T>,
@@ -39,7 +36,6 @@ export function useCustomQuery<T>(
   });
 }
 
-// Custom hook for mutations
 export function useCustomMutation<T, TVariables>(
   mutationFn: (variables: TVariables) => Promise<T>,
   options?: Omit<UseMutationOptions<T, ApiError, TVariables>, "mutationFn">,
