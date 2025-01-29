@@ -4,6 +4,7 @@ import { Manrope, Space_Mono } from "next/font/google";
 import { ReduxProvider } from "./_providers/ReduxProvider";
 import "./globals.css";
 import SessionProvider from "./providers/SessionProvider";
+import { QueryProvider } from "./_providers/QueryProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -34,9 +35,11 @@ export default async function RootLayout({
         className={`${manrope.variable} ${space_Mono.variable} antialiased`}
       >
         <SessionProvider>
-          <ReduxProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </ReduxProvider>
+          <QueryProvider>
+            <ReduxProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </ReduxProvider>
+          </QueryProvider>
         </SessionProvider>
       </body>
     </html>
