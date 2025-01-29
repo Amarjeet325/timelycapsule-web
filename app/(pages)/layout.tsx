@@ -9,6 +9,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <>
       <div>Pages layout</div>
+
       <div>
         <p>Current Theme: {theme}</p>
         <button
