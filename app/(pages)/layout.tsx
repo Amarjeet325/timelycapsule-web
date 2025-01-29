@@ -1,25 +1,30 @@
 "use client";
 
-import { LayoutProps } from "@/.next/types/app/layout";
-import "@/app/globals.css";
-import { useTheme } from "@/context/ThemeContext";
+import { usePathname } from "next/navigation";
 
-export default function RootLayout({ children }: LayoutProps) {
-  const { theme, toggleTheme } = useTheme();
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const isAuthRoute =
+    pathname?.includes("/enter") || pathname?.includes("/join");
+
+  // Si es una ruta de autenticación, retornamos solo el contenido sin el layout principal
+  if (isAuthRoute) {
+    return children;
+  }
+
+  // Para otras rutas, mantenemos el layout normal
   return (
-    <>
-      <div>Pages layout</div>
-
+    <div>
       <div>
-        <p>Current Theme: {theme}</p>
-        <button
-          className="p-2 bg-gray-200 dark:bg-gray-800 rounded"
-          onClick={toggleTheme}
-        >
-          Switch to {theme === "light" ? "dark" : "light"} mode
-        </button>
+        <h1>Pages layout</h1>
+        <p>Current Theme: light</p>
+        <button>Switch to dark mode</button>
       </div>
       {children}
-    </>
+    </div>
   );
 }
