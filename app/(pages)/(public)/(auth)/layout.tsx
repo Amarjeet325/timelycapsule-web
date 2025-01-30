@@ -13,8 +13,8 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col md:flex-row h-screen relative font-manrope bg-auth-background-mobile md:bg-auth-background">
-      <div className="h-[20%] md:h-full md:flex-1 p-8 flex flex-col justify-center items-center md:-mt-[10rem]">
+    <div className="flex flex-col md:flex-row h-screen relative font-manrope bg-auth-background-mobile md:bg-auth-background min-h-[1117px] sm:max-h-[900px] sm:min-h-[900px]">
+      <div className="h-[20%] md:h-full md:flex-1 p-8 flex flex-col justify-center items-center md:-mt-[6rem]">
         <div className="absolute top-0 left-[30%] md:left-[0%] md:top-[0%] md:relative w-full h-full max-w-[159px] max-h-[268px] md:max-w-[550px] md:max-h-[926px]">
           <Image
             src={character}
