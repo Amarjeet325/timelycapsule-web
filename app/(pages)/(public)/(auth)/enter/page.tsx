@@ -71,7 +71,7 @@ export default function LoginPage() {
 
       <button
         type="submit"
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-base font-bold text-Button/Primary bg-Button/Primary-background hover:bg-Heading/H1-main focus:outline-none hover:text-white"
+        className="!mt-[10rem] w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-base font-bold text-Button/Primary bg-Button/Primary-background hover:bg-Heading/H1-main focus:outline-none hover:text-white"
       >
         Sign In
       </button>

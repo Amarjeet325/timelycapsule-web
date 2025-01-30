@@ -35,7 +35,7 @@ export const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
             type={
               rest.type === "password" && !showPassword ? "password" : "text"
             }
-            className={`mt-1 block w-full ${rest.type === "password" ? "pl-3 pr-10" : "px-3"} py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:text-Heading/H1-main focus:border-Heading/H1-main ${error ? ERROR_CLASS : ""} placeholder:text-placeholder`}
+            className={`mt-1 block w-full ${rest.type === "password" ? "pl-3 pr-10" : "px-3"} py-2 border border-input-border rounded-md shadow-sm focus:outline-none focus:text-Heading/H1-main focus:border-Heading/H1-main ${error ? ERROR_CLASS : ""} placeholder:text-placeholder bg-input-background`}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />

@@ -11,12 +11,16 @@ const config: Config = {
       colors: {
         "Heading/H1-main": "#10B981",
         "Heading/H1-mainTwo": "#000000",
+        "Heading/H1-mainThree": "#F8FAFC",
         "Subheading/H4": "#000000",
         label: "#475569",
         placeholder: "#94A3B8",
+        "input-background": "#F8FAFC",
+        "input-border": "#E2E8F0",
         "Body/Paragraph": "#121212",
         "Button/Primary": "#121212",
         "Button/Primary-background": "#8D9094",
+        "Button/Primary-backgroundTwo": "#F1F5F9",
         "Checkbox/Checked": "#10B981",
         "Checkbox/Unchecked": "#D9D9D9",
 
