@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import logo from "@/public/img/logo.png";
 import character from "@/public/img/character.png";
+import characterMobile from "@/public/img/character-mobile.png";
 import rocket from "@/public/img/rocket.png";
 
 export default function AuthLayout({
@@ -13,14 +14,22 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col md:flex-row h-screen relative font-manrope bg-auth-background-mobile md:bg-auth-background min-h-[1117px] sm:max-h-[900px] sm:min-h-[900px]">
+    <div className="flex flex-col md:flex-row h-screen relative font-manrope bg-auth-background-mobile md:bg-auth-background min-h-[900px] lg:max-h-[1117px]">
       <div className="h-[20%] md:h-full md:flex-1 p-8 flex flex-col justify-center items-center md:-mt-[6rem]">
-        <div className="absolute top-0 left-[30%] md:left-[0%] md:top-[0%] md:relative w-full h-full max-w-[159px] max-h-[268px] md:max-w-[550px] md:max-h-[926px]">
+        <div className="absolute -top-[3%] left-[35%] sm:left-[40%] md:left-[0%] md:top-[0%] md:relative w-full h-full max-w-[259px] max-h-[268px] md:max-w-[550px] md:max-h-[926px]">
           <Image
             src={character}
             alt="Character illustration"
             layout="fill"
             objectFit="contain"
+            className="hidden md:block"
+          />
+          <Image
+            src={characterMobile}
+            alt="Character illustration"
+            layout="fill"
+            objectFit="contain"
+            className="block md:hidden"
           />
         </div>
         <h1 className="text-[32px] font-extrabold text-Heading/H1-mainThree text-center hidden md:block -mt-28">
@@ -77,10 +86,12 @@ export default function AuthLayout({
 
       <div
         className="absolute top-0 left-[55%] md:top-1/2 md:left-1/2 transform 
-      lg:-translate-x-[calc(50%+0px)] 
+        hidden md:block
+      lg:-translate-x-[calc(50%+40px)] 
       xl:-translate-x-[calc(50%+40px)] 
-      md:-translate-x-[calc(50%-00px)] 
-      md:-translate-y-[calc(50%+130px)] 
+      md:-translate-x-[calc(50%+40px)] 
+      lg:-translate-y-[calc(50%+90px)] 
+      md:-translate-y-[calc(50%+100px)] 
       xl:-translate-y-[calc(50%+100px)] w-36 h-36 md:w-[480px] md:h-[480px] lg:w-[500px] lg:h-[500px] xl:w-[533px] xl:h-[533px]"
       >
         <Image
