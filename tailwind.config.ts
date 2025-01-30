@@ -34,6 +34,8 @@ const config: Config = {
       backgroundImage: {
         "auth-background":
           "linear-gradient(199.38deg, rgba(16, 185, 129, 0.5) 17.81%, rgba(139, 92, 246, 0.5) 95.61%)",
+        "auth-background-mobile":
+          "linear-gradient(186.76deg, rgba(16, 185, 129, 1) 2.36%, rgba(139, 92, 246, 1) 38.52%)",
       },
     },
   },
