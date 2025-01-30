@@ -1,5 +1,12 @@
 "use client";
 
+import { Manrope } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
 import { LayoutProps } from "@/.next/types/app/layout";
 import "@/app/globals.css";
 import { useTheme } from "@/context/ThemeContext";
@@ -7,7 +14,7 @@ import { useTheme } from "@/context/ThemeContext";
 export default function RootLayout({ children }: LayoutProps) {
   const { theme, toggleTheme } = useTheme();
   return (
-    <>
+    <div className={`${manrope.variable} font-manrope`}>
       <div>Pages layout</div>
 
       <div>
@@ -20,6 +27,6 @@ export default function RootLayout({ children }: LayoutProps) {
         </button>
       </div>
       {children}
-    </>
+    </div>
   );
 }
