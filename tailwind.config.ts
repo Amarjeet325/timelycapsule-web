@@ -9,12 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "Heading/H1-main": "#10B981",
+        "Heading/H1-mainTwo": "#000000",
+        "Subheading/H4": "#000000",
+        label: "#475569",
+        placeholder: "#94A3B8",
+        "Body/Paragraph": "#121212",
+        "Button/Primary": "#121212",
+        "Button/Primary-background": "#8D9094",
+        "Checkbox/Checked": "#10B981",
+        "Checkbox/Unchecked": "#D9D9D9",
+
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
       fontFamily: {
         manrope: ["var(--font-manrope)"],
         spaceMono: ["var(--font-space-mono)"],
+      },
+      backgroundImage: {
+        "auth-background":
+          "linear-gradient(199.38deg, rgba(16, 185, 129, 0.5) 17.81%, rgba(139, 92, 246, 0.5) 95.61%)",
       },
     },
   },

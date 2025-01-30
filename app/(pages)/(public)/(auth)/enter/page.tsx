@@ -1,23 +1,28 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { loginSchema } from "@/app/utils/validators";
 import { InputForm } from "@/app/components/InputForm";
-
+import { CustomCheckbox } from "@/app/components/CustomCheckbox";
 interface LoginFormProps {
   email: string;
   password: string;
+  rememberMe: boolean;
 }
 
 export default function LoginPage() {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormProps>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      rememberMe: false,
+    },
   });
 
   const onSubmit = (data: LoginFormProps) => {
@@ -43,21 +48,22 @@ export default function LoginPage() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="remember"
-            className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+          <Controller
+            control={control}
+            name="rememberMe"
+            render={({ field }) => (
+              <CustomCheckbox
+                id="remember"
+                label="Remember me"
+                checked={field.value}
+                onChange={field.onChange}
+              />
+            )}
           />
-          <label
-            htmlFor="remember"
-            className="ml-2 block text-sm text-gray-700"
-          >
-            Remember me
-          </label>
         </div>
         <Link
           href="/forgot-password"
-          className="text-sm text-teal-600 hover:text-teal-500"
+          className="text-base font-normal text-Body/Paragraph hover:text-Heading/H1-main"
         >
           Forgot password?
         </Link>
@@ -65,7 +71,7 @@ export default function LoginPage() {
 
       <button
         type="submit"
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-base font-bold text-Button/Primary bg-Button/Primary-background hover:bg-Heading/H1-main focus:outline-none hover:text-white"
       >
         Sign In
       </button>

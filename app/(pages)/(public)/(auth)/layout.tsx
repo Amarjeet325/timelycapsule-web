@@ -13,8 +13,8 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col md:flex-row h-screen relative">
-      <div className="flex-1 bg-gradient-to-b from-teal-300 via-blue-300 to-purple-300 p-8 flex flex-col justify-center items-center">
+    <div className="flex flex-col md:flex-row h-screen relative font-manrope">
+      <div className="flex-1 bg-auth-background p-8 flex flex-col justify-center items-center">
         <div className="relative w-64 h-64 md:w-96 md:h-96">
           <Image
             src={character}
@@ -44,18 +44,22 @@ export default function AuthLayout({
           </div>
         </div>
         <div className="max-w-[581px] w-full mx-auto">
-          <h2 className="text-2xl font-semibold text-center mb-2">
-            Join Timely<span className="text-teal-600">Capsule</span>
+          <h2 className="text-[32px] text-Heading/H1-mainTwo font-extrabold text-center mb-2">
+            Join Timely
+            <span className="text-Heading/H1-main font-extrabold">Capsule</span>
           </h2>
-          <p className="text-gray-600 mb-8 text-center">
+          <p className="text-Subheading/H4 text-center text-lg">
             Unlock your capsules across time and space.
           </p>
         </div>
         <div className="max-w-[581px] w-full mx-auto">{children}</div>
         <div className="max-w-md w-full mx-auto">
-          <p className="mt-6 text-center text-sm text-gray-600">
+          <p className="mt-6 text-center text-lg text-Subheading/H4 font-semibold">
             Already have an account?{" "}
-            <Link href="/login" className="text-teal-600 hover:text-teal-500">
+            <Link
+              href="/login"
+              className="text-Heading/H1-main hover:text-Heading/H1-main/40 text-lg font-bold"
+            >
               Sign in
             </Link>
           </p>
