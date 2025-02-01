@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TimelyCapsule
 
-## Getting Started
+TimelyCapsule is a web-based application that empowers users to create, seal, and send time-locked messages or media capsules. These capsules unlock at a specified date and time and can include text, images, videos, or cryptocurrency payments. The platform blends Web2 and Web3 technologies to provide a seamless and engaging experience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Create and schedule time-locked capsules
+- Support for text, images, videos, and cryptocurrency gifts
+- Hybrid Web2 and Web3 architecture
+- Web2-based capsule integrity and storage
+- Web3-powered subscription payments and in-app purchases
+- Guest and registered user accessibility
+- Secure and scalable infrastructure
+- Customizable capsule delivery settings
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+TimelyCapsule is built using modern web technologies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- _Frontend:_ Next.js, React, Tailwind CSS
+- _Backend:_ Node.js, Express
+- _Database:_ MongoDB
+- _File Storage:_ AWS S3
+- _Blockchain:_ Cairo, Starknet
+- _Authentication:_ NextAuth.js
+- _Payments:_ Web3-based transactions
 
-## Learn More
+## Installation & Setup
 
-To learn more about Next.js, take a look at the following resources:
+To run the project locally, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. _Clone the repository:_
+   bash
+   git clone https://github.com/enbliq/timelycapsule-web.git
+   cd timelycapsule-web
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. _Install dependencies:_
+   bash
+   npm install
 
-## Deploy on Vercel
+3. _Set up environment variables:_
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - Create a .env.local file in the root directory.
+   - Add the following line to the file:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+     NEXTAUTH_SECRET=set_to_a_random_text
+
+4. _Run the development server:_
+   bash
+   npm run dev
+
+   The application will be available at http://localhost:3000.
+
+## Contribution Guidelines
+
+We welcome contributions to TimelyCapsule! Follow these steps to contribute:
+
+1. _Fork the repository_ on GitHub.
+2. _Clone your forked repository_:
+   bash
+   git clone https://github.com/your-username/timelycapsule-web.git
+3. _Create a new branch_ for your feature or bug fix:
+   bash
+   git checkout -b feature-name
+4. _Make your changes and commit_:
+   bash
+   git add .
+   git commit -m "Describe your changes"
+5. _Push to your fork_:
+   bash
+   git push origin feature-name
+6. _Submit a Pull Request (PR)_ to the main repository.
+
+## License
+
+TimelyCapsule is open-source and licensed under the MIT License.
+
+## Contact
+
+For any questions, feel free to reach out via GitHub Issues or visit the [repository](https://github.com/enbliq/timelycapsule-web).

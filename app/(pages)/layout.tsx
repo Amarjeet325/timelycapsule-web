@@ -1,30 +1,28 @@
 "use client";
 
-import { Manrope } from "next/font/google";
+import { usePathname } from "next/navigation";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-});
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const isAuthRoute =
+    pathname?.includes("/enter") || pathname?.includes("/join");
 
-import { LayoutProps } from "@/.next/types/app/layout";
-import "@/app/globals.css";
-import { useTheme } from "@/context/ThemeContext";
+  // Si es una ruta de autenticación, retornamos solo el contenido sin el layout principal
+  if (isAuthRoute) {
+    return children;
+  }
 
-export default function RootLayout({ children }: LayoutProps) {
-  const { theme, toggleTheme } = useTheme();
+  // Para otras rutas, mantenemos el layout normal
   return (
-    <div className={`${manrope.variable} font-manrope`}>
-      <div>Pages layout</div>
-
+    <div>
       <div>
-        <p>Current Theme: {theme}</p>
-        <button
-          className="p-2 bg-gray-200 dark:bg-gray-800 rounded"
-          onClick={toggleTheme}
-        >
-          Switch to {theme === "light" ? "dark" : "light"} mode
-        </button>
+        <h1>Pages layout</h1>
+        <p>Current Theme: light</p>
+        <button>Switch to dark mode</button>
       </div>
       {children}
     </div>
