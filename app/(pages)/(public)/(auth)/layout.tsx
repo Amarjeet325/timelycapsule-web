@@ -15,8 +15,8 @@ export default function AuthLayout({
 }) {
   return (
     <div className="flex flex-col md:flex-row h-screen relative font-manrope bg-auth-background-mobile md:bg-auth-background min-h-[900px] lg:max-h-[1117px]">
-      <div className="h-[20%] md:h-full md:flex-1 p-8 flex flex-col justify-center items-center md:-mt-[6rem]">
-        <div className="absolute -top-[3%] left-[35%] sm:left-[40%] md:left-[0%] md:top-[0%] md:relative w-full h-full max-w-[259px] max-h-[268px] md:max-w-[550px] md:max-h-[926px]">
+      <div className="h-[20%] md:h-full md:flex-1 p-16 flex flex-col justify-center items-center md:-mt-[6rem]">
+        <div className="absolute -top-[2%] left-[28%] sm:left-[40%] md:left-[0%] md:top-[0%] md:relative w-full h-full max-w-[259px] max-h-[268px] md:max-w-[550px] md:max-h-[926px]">
           <Image
             src={character}
             alt="Character illustration"
@@ -46,7 +46,7 @@ export default function AuthLayout({
         rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[20px] rounded-br-[20px] md:rounded-tl-[50px] md:rounded-tr-none md:rounded-bl-[50px] md:rounded-br-none"
         >
           <div className="flex-col justify-start items-start max-w-md w-full hidden md:flex">
-            <div className="text-left mb-8">
+            <div className="text-left">
               <Image
                 src={logo}
                 alt="TimelyCapsule Logo"
@@ -56,8 +56,8 @@ export default function AuthLayout({
               />
             </div>
           </div>
-          <div className="max-w-[581px] w-full mx-auto">
-            <h2 className="text-[32px] text-Heading/H1-mainTwo font-extrabold text-center mb-2 md:-mt-[5rem]">
+          <div className="max-w-[581px] w-full mx-auto md:mt-[10px]">
+            <h2 className="text-[32px] text-Heading/H1-mainTwo font-extrabold text-center mb-2">
               Join Timely
               <span className="text-Heading/H1-main font-extrabold">
                 Capsule
@@ -67,9 +67,7 @@ export default function AuthLayout({
               Unlock your capsules across time and space.
             </p>
           </div>
-          <div className="max-w-[581px] w-full mx-auto mt-[4rem]">
-            {children}
-          </div>
+          <div className="max-w-[581px] w-full mx-auto mt-8">{children}</div>
           <div className="max-w-md w-full mx-auto">
             <p className="mt-6 text-center text-lg text-Subheading/H4 font-semibold">
               Already have an account?{" "}
