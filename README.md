@@ -17,40 +17,37 @@ TimelyCapsule is a web-based application that empowers users to create, seal, an
 
 TimelyCapsule is built using modern web technologies:
 
-- *Frontend:* Next.js, React, Tailwind CSS
-- *Backend:* Node.js, Express
-- *Database:* MongoDB
-- *File Storage:* AWS S3
-- *Blockchain:* Cairo, Starknet
-- *Authentication:* NextAuth.js
-- *Payments:* Web3-based transactions
+- _Frontend:_ Next.js, React, Tailwind CSS
+- _Backend:_ Node.js, Express
+- _Database:_ MongoDB
+- _File Storage:_ AWS S3
+- _Blockchain:_ Cairo, Starknet
+- _Authentication:_ NextAuth.js
+- _Payments:_ Web3-based transactions
 
 ## Installation & Setup
 
 To run the project locally, follow these steps:
 
-1. *Clone the repository:*
+1. _Clone the repository:_
    bash
    git clone https://github.com/enbliq/timelycapsule-web.git
    cd timelycapsule-web
-   
 
-2. *Install dependencies:*
+2. _Install dependencies:_
    bash
    npm install
-   
 
-3. *Set up environment variables:*
+3. _Set up environment variables:_
+
    - Create a .env.local file in the root directory.
    - Add the following line to the file:
-     
-     NEXTAUTH_SECRET=set_to_a_random_text
-     
 
-4. *Run the development server:*
+     NEXTAUTH_SECRET=set_to_a_random_text
+
+4. _Run the development server:_
    bash
    npm run dev
-   
 
    The application will be available at http://localhost:3000.
 
@@ -58,25 +55,21 @@ To run the project locally, follow these steps:
 
 We welcome contributions to TimelyCapsule! Follow these steps to contribute:
 
-1. *Fork the repository* on GitHub.
-2. *Clone your forked repository*:
+1. _Fork the repository_ on GitHub.
+2. _Clone your forked repository_:
    bash
    git clone https://github.com/your-username/timelycapsule-web.git
-   
-3. *Create a new branch* for your feature or bug fix:
+3. _Create a new branch_ for your feature or bug fix:
    bash
    git checkout -b feature-name
-   
-4. *Make your changes and commit*:
+4. _Make your changes and commit_:
    bash
    git add .
    git commit -m "Describe your changes"
-   
-5. *Push to your fork*:
+5. _Push to your fork_:
    bash
    git push origin feature-name
-   
-6. *Submit a Pull Request (PR)* to the main repository.
+6. _Submit a Pull Request (PR)_ to the main repository.
 
 ## License
 
