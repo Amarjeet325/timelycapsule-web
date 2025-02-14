@@ -27,6 +27,12 @@ TimelyCapsule is built using modern web technologies:
 
 ## Installation & Setup
 
+### Prerequisites:
+
+- Node.js 18.x or higher
+- npm 8.x or higher
+- Docker & Docker Compose (optional, for containerized development)
+
 To run the project locally, follow these steps:
 
 1. _Clone the repository:_
@@ -40,16 +46,20 @@ To run the project locally, follow these steps:
 
 3. _Set up environment variables:_
 
-   - Create a .env.local file in the root directory.
-   - Add the following line to the file:
-
-     NEXTAUTH_SECRET=set_to_a_random_text
+   - Rename the .env.local to .env
 
 4. _Run the development server:_
    bash
    npm run dev
 
    The application will be available at http://localhost:3000.
+
+5. \_Build the docker image
+   docker build -t timelycapsule-web .
+   If it fails the first time, check your internet connection and try again
+
+6. Run the docker container:
+   docker run -d -p 3000:3000 timelycapsule-web
 
 ## Contribution Guidelines
 
