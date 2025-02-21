@@ -1,7 +1,5 @@
-import { ThemeProvider } from "@/context/ThemeContext";
 import type { Metadata } from "next";
 import { Manrope, Space_Mono } from "next/font/google";
-import { ReduxProvider } from "./_providers/ReduxProvider";
 import "./globals.css";
 import SessionProvider from "./providers/SessionProvider";
 import { QueryProvider } from "./_providers/QueryProvider";
@@ -24,21 +22,17 @@ export const metadata: Metadata = {
   description: "Your digital time capsule",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${manrope.variable} ${space_Mono.variable} antialiased`}
-      >
+      <body className={`${manrope.variable} ${space_Mono.variable} antialiased`}>
         <SessionProvider>
           <QueryProvider>
-            <ReduxProvider>
-              <ThemeProvider>{children}</ThemeProvider>
-            </ReduxProvider>
+            {children}
           </QueryProvider>
         </SessionProvider>
       </body>

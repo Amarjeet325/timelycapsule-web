@@ -10,7 +10,7 @@ export default function PublicLayout({ children }: LayoutProps) {
     pathname?.includes("/enter") || pathname?.includes("/join");
 
   if (isAuthRoute) {
-    return children;
+    return <>{children}</>;
   }
 
   return (
