@@ -20,10 +20,12 @@ export default function AuthLayout({
           <Image
             src={character}
             alt="Character illustration"
-            layout="fill"
-            objectFit="contain"
+            fill
             className="hidden md:block"
+            style={{ objectFit: 'contain' }}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
+
           <Image
             src={characterMobile}
             alt="Character illustration"
@@ -95,8 +97,9 @@ export default function AuthLayout({
         <Image
           src={rocket}
           alt="Rocket illustration"
-          layout="fill"
-          objectFit="contain"
+          fill
+          style={{ objectFit: 'contain' }}
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
     </div>
