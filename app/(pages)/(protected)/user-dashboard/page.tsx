@@ -45,7 +45,7 @@ const recentData = [
 ];
 
 export default function Page() {
-  const categories = ["Most Recents", "Most Popular", "Trending"];
+  const categories = ["All Capsules", "Capsules", "Capsules"];
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(categories[0]);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -109,7 +109,7 @@ export default function Page() {
       <div className=" w-full flex flex-col md:flex-row items-center gap-6 justify-between">
         {status.map((stat, index) => (
           <CapsuleStatusCard
-          key={index}
+            key={index}
             title={stat.title}
             figure={stat.figure}
             colour={stat.colour}
@@ -123,7 +123,7 @@ export default function Page() {
         <h3 className=" font-bold text-lg text-[#000000] ">Recent Capsules</h3>
         {recentData.map((data, index) => (
           <RecentCapsules
-          key={index}
+            key={index}
             heading={data.heading}
             daysToUnlock={data.daysToUnlock}
           />
