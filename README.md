@@ -46,7 +46,7 @@ To run the project locally, follow these steps:
 
 3. _Set up environment variables:_
 
-   - Rename the .env.local to .env
+   - Rename the .env.example to .env.local
 
 4. _Run the development server:_
    bash
@@ -54,11 +54,15 @@ To run the project locally, follow these steps:
 
    The application will be available at http://localhost:3000.
 
-5. \_Build the docker image
+   sign in with 
+   username: user@example.com
+   password: password
+
+6. \_Build the docker image
    docker build -t timelycapsule-web .
    If it fails the first time, check your internet connection and try again
 
-6. Run the docker container:
+7. Run the docker container:
    docker run -d -p 3000:3000 timelycapsule-web
 
 ## Contribution Guidelines
