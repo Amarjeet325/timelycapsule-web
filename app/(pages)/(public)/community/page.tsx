@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   Users,
@@ -14,11 +16,11 @@ function Community() {
   const [activeTab, setActiveTab] = useState("feed");
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="max-w-6xl mx-auto my-5 px-2 space-y-8">
+      <div className="flex flex-col justify-between  md:items-center md:flex-row">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Community</h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 mb-2 text-gray-600 md:mb-0">
             Connect with other time capsule creators
           </p>
         </div>
@@ -81,6 +83,8 @@ function Community() {
                 <Image
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
                   alt="User"
+                  height={48}
+                  width={48}
                   className="h-12 w-12 rounded-full"
                 />
                 <div className="flex-1">
