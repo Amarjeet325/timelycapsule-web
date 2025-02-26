@@ -11,6 +11,7 @@ const publicPathStarts = [
   "/explore",
   "lost-in-time",
   "/treasure",
+  "/tofs",
 ];
 const adminPathStarts = ["/admin"];
 
