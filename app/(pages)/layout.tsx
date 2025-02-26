@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Header from "../components/layout/Header";
 
 export default function PagesLayout({
   children,
@@ -13,5 +14,10 @@ export default function PagesLayout({
     return <>{children}</>;
   }
 
-  return <div>{children}</div>;
+  return (
+    <div>
+      <Header />
+      {children}
+    </div>
+  );
 }

@@ -27,7 +27,7 @@ const Button = ({
     <button
       type={type}
       className={clsx(
-        "cursor-pointer px-6 rounded-[8px] w-[101px] h-[46px] font-semibold",
+        "cursor-pointer px-6 rounded-[8px] h-[38px] font-medium",
         className,
         {
           // size variation
@@ -35,17 +35,15 @@ const Button = ({
           "w-[115px] h-[46px] text-[16px]": size === "md",
           "w-[130px] h-[52px] text-[18px]": size === "lg",
           // type variation
-          "bg-[#8D9094] text-black font-[700] text-[16px]":
-            variant === "primary",
-          "bg-[#059669] text-white font-[700] text-[16px]":
-            variant === "secondary",
-          "bg-transparent border-[#10B981] border-[1px] border-solid w-[101px] h-[46px] text-white font-[700] text-[16px]":
+          "bg-primaryDark text-white": variant === "primary",
+          "bg-[#059669] text-white": variant === "secondary",
+          "bg-transparent border-gray-300 border-[1px] border-solid":
             variant === "outline",
-          "bg-gradient-to-l from-[#10B981] to-[#0C191FC9] w-[101px] h-[46px] text-white font-[700] text-[16px]":
+          "bg-gradient-to-l from-[#10B981] to-[#0C191FC9]":
             variant === "gradient",
-          "bg-transparent border-[#00000] border-[1px] border-solid w-[101px] h-[46px] text-white font-[700] text-[16px]":
+          "bg-transparent border-[#00000] border-[1px] border-solid":
             variant === "dark-outline",
-          "bg-transparent border-[#059669] border-[1px] border-solid w-[101px] h-[46px] text-white font-[700] text-[16px]":
+          "bg-transparent border-[#059669] border-[1px] border-solid":
             variant === "dim-secondary",
         },
       )}
