@@ -1,7 +1,9 @@
-import Link from "next/link";
-import { Home } from "lucide-react";
+"use client";
 
-export default function NotFound() {
+import { Home } from "lucide-react";
+import Link from "next/link";
+
+export default function LostInTimePage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <div className="text-center">
@@ -14,7 +16,7 @@ export default function NotFound() {
         <p className="mt-2 text-sm sm:text-base text-gray-600">
           Oops! The page you&apos;re looking for doesn&apos;t exist.
         </p>
-        <Link href="/">
+        <Link href="/enter">
           <button className="mt-6 px-4 py-2 mx-auto bg-purple-500 text-white rounded-md flex items-center gap-2">
             <Home width={24} height={24} />
             Return Home
