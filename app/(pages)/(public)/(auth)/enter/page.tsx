@@ -6,6 +6,7 @@ import Link from "next/link";
 import { loginSchema } from "@/app/utils/validators";
 import { InputForm } from "@/app/components/InputForm";
 import { CustomCheckbox } from "@/app/components/CustomCheckbox";
+import { signIn } from "next-auth/react";
 interface LoginFormProps {
   email: string;
   password: string;
@@ -25,8 +26,14 @@ export default function LoginPage() {
     },
   });
 
-  const onSubmit = (data: LoginFormProps) => {
+  const onSubmit = async (data: LoginFormProps) => {
     console.log(data);
+
+    await signIn("credentials", {
+      redirect: true,
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
@@ -45,8 +52,6 @@ export default function LoginPage() {
         error={errors.password?.message}
         placeholder="Enter your password"
       />
-
-
 
       <div className="flex items-center justify-between">
         <div className="flex items-center">

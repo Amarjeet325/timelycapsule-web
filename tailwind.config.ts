@@ -9,6 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#6366F1",
+        primaryDark: "#4338CA",
+
         "Heading/H1-main": "#10B981",
         "Heading/H1-mainTwo": "#000000",
         "Heading/H1-mainThree": "#F8FAFC",
