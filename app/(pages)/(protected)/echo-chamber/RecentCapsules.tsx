@@ -20,7 +20,7 @@ export default function RecentCapsules({
           {heading}
         </h1>
         <p className=" text-xs text-[#9FA3AD] ">
-          Unlock in {daysToUnlock} days{" "}
+          Unlock in {daysToUnlock} days
         </p>
       </div>
 
