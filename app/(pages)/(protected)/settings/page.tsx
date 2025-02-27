@@ -14,6 +14,8 @@ import {
   EyeOff,
   Moon,
   Sun,
+  Mail,
+  Globe2,
 } from "lucide-react";
 
 const navItems = [
@@ -146,7 +148,52 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
-            {activeTab === "notifications" && <div>Notifications Content</div>}
+            {/* Notifications */}
+            {activeTab === "notifications" && (
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold mb-4">
+                  Notification Preferences
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <Mail className="h-5 w-5 text-gray-600" />
+                      <div>
+                        <h3 className="font-medium">Email Notifications</h3>
+                        <p className="text-sm text-gray-500">
+                          Receive updates about your capsules
+                        </p>
+                      </div>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        defaultChecked
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                    </label>
+                  </div>
+
+                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <Globe2 className="h-5 w-5 text-gray-600" />
+                      <div>
+                        <h3 className="font-medium">Browser Notifications</h3>
+                        <p className="text-sm text-gray-500">
+                          Get instant alerts in your browser
+                        </p>
+                      </div>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" className="sr-only peer" />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {activeTab === "security" && <div>Security Content</div>}
             {activeTab === "privacy" && <div>Privacy Content</div>}
             {activeTab === "billing" && <div>Billing Content</div>}
