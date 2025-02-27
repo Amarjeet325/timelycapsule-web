@@ -40,7 +40,11 @@ const AccountSettingsPage = () => {
     analytics: true,
     marketing: false,
     thirdParty: false,
+    blockchain: true,
   });
+  // New privacy-related state
+  const [autoDeleteCapsules, setAutoDeleteCapsules] = useState(true);
+  const [anonContracts, setAnonContracts] = useState(false);
   const [accountVisibility, setAccountVisibility] = useState("public");
   const [activityTracking, setActivityTracking] = useState(true);
   const [dataRetention, setDataRetention] = useState("1year");
@@ -53,7 +57,7 @@ const AccountSettingsPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-8 relative pb-10">
+    <div className="max-w-6xl mx-auto mt-8 relative pb-10 h-auto ">
       <div className="sm:flex justify-between items-center w-full lg:p-8 p-3">
         <h1 className="text-3xl font-bold text-gray-900">Account & Settings</h1>
         <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
@@ -260,20 +264,48 @@ const AccountSettingsPage = () => {
                     third parties.
                   </p>
                   <div className="space-y-4">
+                    {/* Existing data sharing controls */}
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="font-medium">Analytics Collection</h4>
+                        <h4 className="font-medium">Blockchain Analytics</h4>
                         <p className="text-sm text-gray-500">
-                          Allow us to collect anonymous usage data to improve
-                          our services
+                          Share anonymized wallet activity for chain analysis
                         </p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
                           type="checkbox"
                           className="sr-only peer"
-                          checked={dataSharing.analytics}
-                          onChange={() => handleDataSharingChange("analytics")}
+                          checked={dataSharing.blockchain}
+                          onChange={() => handleDataSharingChange("blockchain")}
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                {/* New Capsule Privacy Section */}
+                <div className="p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium mb-3">Capsule Privacy</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-medium">
+                          Auto-Delete Unlocked Capsules
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Automatically remove opened capsules after 24 hours
+                        </p>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={autoDeleteCapsules}
+                          onChange={() =>
+                            setAutoDeleteCapsules(!autoDeleteCapsules)
+                          }
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
                       </label>
@@ -282,44 +314,34 @@ const AccountSettingsPage = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">
-                          Marketing Communications
+                          Smart Contract Anonymity
                         </h4>
                         <p className="text-sm text-gray-500">
-                          Receive personalized offers and updates about our
-                          products
+                          Use privacy-preserving smart contracts for capsules
                         </p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
                           type="checkbox"
                           className="sr-only peer"
-                          checked={dataSharing.marketing}
-                          onChange={() => handleDataSharingChange("marketing")}
-                        />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                      </label>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="font-medium">Third Party Sharing</h4>
-                        <p className="text-sm text-gray-500">
-                          Allow us to share your data with trusted partners
-                        </p>
-                      </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          className="sr-only peer"
-                          checked={dataSharing.thirdParty}
-                          onChange={() => handleDataSharingChange("thirdParty")}
+                          checked={anonContracts}
+                          onChange={() => setAnonContracts(!anonContracts)}
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
                       </label>
                     </div>
                   </div>
                 </div>
-
+                <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm">
+                  <h4 className="font-medium text-yellow-800 mb-2">
+                    Blockchain Notice
+                  </h4>
+                  <p className="text-yellow-700">
+                    Crypto transactions and smart contract interactions are
+                    immutable and publicly visible on the blockchain. Deleting
+                    account data will not remove blockchain records.
+                  </p>
+                </div>
                 {/* Account Visibility Section */}
                 <div className="p-4 border border-gray-200 rounded-lg">
                   <h3 className="font-medium mb-3">Account Visibility</h3>
