@@ -1,10 +1,10 @@
 "use client";
 import { ChevronDown } from "lucide-react";
-import CapsuleCard from "../../../components/CapsuleCard";
-import CapsuleData from "./CapsuleData";
+import CapsuleCard from "@/app/components/CapsuleCard";
 import { useEffect, useRef, useState } from "react";
+import CapsuleData from "./CapsuleData";
 
-export default function PublicCapsules() {
+export default function ExplorePage() {
   const categories = ["Most Recents", "Most Popular", "Trending"];
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(categories[0]);
