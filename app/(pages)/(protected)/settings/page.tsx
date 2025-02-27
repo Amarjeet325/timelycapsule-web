@@ -271,7 +271,59 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
-            {activeTab === "wallet" && <div>Wallet Content</div>}
+            {/* Crypto Wallet */}
+            {activeTab === "wallet" && (
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold mb-4">
+                  Crypto Wallet Settings
+                </h2>
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="font-medium">Connected Wallet</h3>
+                      <p className="text-sm font-mono mt-1">0x1234...5678</p>
+                    </div>
+                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                      Change Wallet
+                    </button>
+                  </div>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <div className="flex items-center justify-between">
+                      <span>Network</span>
+                      <span>Ethereum Mainnet</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Status</span>
+                      <span className="text-green-600">Connected</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="p-4 border border-gray-200 rounded-lg">
+                    <h3 className="font-medium mb-2">Transaction Settings</h3>
+                    <div className="space-y-4">
+                      <label className="flex items-center space-x-3">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 text-indigo-600"
+                          defaultChecked
+                        />
+                        <span>Require password for all transactions</span>
+                      </label>
+                      <label className="flex items-center space-x-3">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 text-indigo-600"
+                          defaultChecked
+                        />
+                        <span>Email notifications for transactions</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </main>
       </div>
