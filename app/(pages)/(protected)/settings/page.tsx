@@ -194,7 +194,6 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
-
             {/* Security */}
             {activeTab === "security" && (
               <div className="space-y-6">
@@ -230,7 +229,48 @@ const SettingsPage = () => {
               </div>
             )}
             {activeTab === "privacy" && <div>Privacy Content</div>}
-            {activeTab === "billing" && <div>Billing Content</div>}
+            {/* Billing */}
+            {activeTab === "billing" && (
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold mb-4">
+                  Billing & Subscription
+                </h2>
+                <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="font-medium">Current Plan</h3>
+                      <p className="text-sm text-gray-500">
+                        Pro Plan - $9.99/month
+                      </p>
+                    </div>
+                    <button className="px-4 py-2 text-indigo-600 border border-indigo-600 rounded-md hover:bg-indigo-50">
+                      Upgrade Plan
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <span className="flex-1">Next billing date</span>
+                      <span>April 1, 2024</span>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <span className="flex-1">Payment method</span>
+                      <span>•••• 4242</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <span className="font-medium">Billing History</span>
+                    <CreditCard className="h-5 w-5 text-gray-600" />
+                  </button>
+                  <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <span className="font-medium">Update Payment Method</span>
+                    <CreditCard className="h-5 w-5 text-gray-600" />
+                  </button>
+                </div>
+              </div>
+            )}
             {activeTab === "wallet" && <div>Wallet Content</div>}
           </div>
         </main>
