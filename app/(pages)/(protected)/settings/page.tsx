@@ -36,6 +36,11 @@ const SettingsPage = () => {
   const [activeTab, setActiveTab] = useState("general");
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState("en");
+  const [dataSharing, setDataSharing] = useState({
+    analytics: true,
+    marketing: false,
+    thirdParty: false,
+  });
 
   return (
     <div className="max-w-6xl mx-auto mt-8 relative pb-10">
@@ -228,7 +233,45 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
-            {activeTab === "privacy" && <div>Privacy Content</div>}
+            {activeTab === "privacy" && (
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold mb-4">Privacy Settings</h2>
+
+                {/* Data Sharing Section */}
+                <div className="p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium mb-3">Data Sharing</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Control how your data is used across our platform and with
+                    third parties.
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-medium">Analytics Collection</h4>
+                        <p className="text-sm text-gray-500">
+                          Allow us to collect anonymous usage data to improve
+                          our services
+                        </p>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={dataSharing.analytics}
+                          onChange={() =>
+                            setDataSharing((prev) => ({
+                              ...prev,
+                              analytics: !prev.analytics,
+                            }))
+                          }
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
             {/* Billing */}
             {activeTab === "billing" && (
               <div className="space-y-6">
