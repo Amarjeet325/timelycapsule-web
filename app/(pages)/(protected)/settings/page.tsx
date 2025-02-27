@@ -1,22 +1,22 @@
-// function classNames(...classes: string[]): string {
-//   return classes.filter(Boolean).join(" ");
-// }
-
 "use client";
 
 import { useState } from "react";
+
 import {
   Settings,
   Bell,
   Shield,
   Wallet,
   CreditCard,
-  EyeOff,
-  Moon,
-  Sun,
-  Mail,
   Key,
   Globe2,
+  Mail,
+  Moon,
+  Sun,
+  EyeOff,
+  Download,
+  Trash2,
+  UserX,
 } from "lucide-react";
 
 const navItems = [
@@ -32,7 +32,7 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-const SettingsPage = () => {
+const AccountSettingsPage = () => {
   const [activeTab, setActiveTab] = useState("general");
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState("en");
@@ -41,6 +41,16 @@ const SettingsPage = () => {
     marketing: false,
     thirdParty: false,
   });
+  const [accountVisibility, setAccountVisibility] = useState("public");
+  const [activityTracking, setActivityTracking] = useState(true);
+  const [dataRetention, setDataRetention] = useState("1year");
+
+  const handleDataSharingChange = (key: keyof typeof dataSharing) => {
+    setDataSharing((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <div className="max-w-6xl mx-auto mt-8 relative pb-10">
@@ -52,12 +62,13 @@ const SettingsPage = () => {
       </div>
 
       <div className="mx-auto max-w-7xl py-4 lg:grid lg:grid-cols-12 md:gap-x-16 lg:px-8 h-auto">
-        <aside className="bg-white lg:rounded-xl mb-10 lg:mb-none overflow-x-auto col-span-3 shadow-md p-4 max-h-[450px] h-full lg:block lg:w-64 lg:flex-none lg:border-0 lg:py-10">
+        <aside className="  bg-white lg:rounded-xl mb-10 lg:mb-none overflow-x-auto col-span-3 shadow-md p-4 max-h-[450px] h-full lg:block lg:w-64 lg:flex-none lg:border-0 lg:py-10">
           <nav className="space-y-2 flex-none">
             <div className="flex gap-x-3 gap-y-1 whitespace-nowrap lg:flex-col">
               {navItems.map((item) => (
                 <div key={item.id}>
                   <button
+                    key={item.id}
                     onClick={() => setActiveTab(item.id)}
                     className={classNames(
                       "w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left",
@@ -77,7 +88,7 @@ const SettingsPage = () => {
         </aside>
 
         <main className="px-4 sm:px-6 lg:flex-auto lg:px-0 col-span-9 h-auto">
-          <div className="lg:mx-0 lg:max-w-none h-full bg-white rounded-xl shadow-md p-6">
+          <div className="lg:mx-0 lg:max-w-none h-full bg-white rounded-xl shadow-md p-6 ">
             {/* General Settings */}
             {activeTab === "general" && (
               <div className="space-y-6">
@@ -154,6 +165,7 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
+
             {/* Notifications */}
             {activeTab === "notifications" && (
               <div className="space-y-6">
@@ -199,6 +211,7 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
+
             {/* Security */}
             {activeTab === "security" && (
               <div className="space-y-6">
@@ -233,6 +246,8 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
+
+            {/* Privacy - New Tab */}
             {activeTab === "privacy" && (
               <div className="space-y-6">
                 <h2 className="text-xl font-semibold mb-4">Privacy Settings</h2>
@@ -258,20 +273,237 @@ const SettingsPage = () => {
                           type="checkbox"
                           className="sr-only peer"
                           checked={dataSharing.analytics}
-                          onChange={() =>
-                            setDataSharing((prev) => ({
-                              ...prev,
-                              analytics: !prev.analytics,
-                            }))
-                          }
+                          onChange={() => handleDataSharingChange("analytics")}
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                      </label>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-medium">
+                          Marketing Communications
+                        </h4>
+                        <p className="text-sm text-gray-500">
+                          Receive personalized offers and updates about our
+                          products
+                        </p>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={dataSharing.marketing}
+                          onChange={() => handleDataSharingChange("marketing")}
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                      </label>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-medium">Third Party Sharing</h4>
+                        <p className="text-sm text-gray-500">
+                          Allow us to share your data with trusted partners
+                        </p>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={dataSharing.thirdParty}
+                          onChange={() => handleDataSharingChange("thirdParty")}
                         />
                         <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
                       </label>
                     </div>
                   </div>
                 </div>
+
+                {/* Account Visibility Section */}
+                <div className="p-4 border border-gray-200 rounded-lg">
+                  <h3 className="font-medium mb-3">Account Visibility</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Control who can see your account and activity within the
+                    platform.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="visibility-public"
+                        name="visibility"
+                        className="h-4 w-4 text-indigo-600"
+                        checked={accountVisibility === "public"}
+                        onChange={() => setAccountVisibility("public")}
+                      />
+                      <label
+                        htmlFor="visibility-public"
+                        className="text-sm text-gray-700"
+                      >
+                        Public{" "}
+                        <span className="text-xs text-gray-500">
+                          (Everyone can see your profile and activity)
+                        </span>
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="visibility-connections"
+                        name="visibility"
+                        className="h-4 w-4 text-indigo-600"
+                        checked={accountVisibility === "connections"}
+                        onChange={() => setAccountVisibility("connections")}
+                      />
+                      <label
+                        htmlFor="visibility-connections"
+                        className="text-sm text-gray-700"
+                      >
+                        Connections Only{" "}
+                        <span className="text-xs text-gray-500">
+                          (Only your connections can see your profile and
+                          activity)
+                        </span>
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <input
+                        type="radio"
+                        id="visibility-private"
+                        name="visibility"
+                        className="h-4 w-4 text-indigo-600"
+                        checked={accountVisibility === "private"}
+                        onChange={() => setAccountVisibility("private")}
+                      />
+                      <label
+                        htmlFor="visibility-private"
+                        className="text-sm text-gray-700"
+                      >
+                        Private{" "}
+                        <span className="text-xs text-gray-500">
+                          (Your profile is hidden from other users)
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Activity Tracking */}
+                <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="font-medium">Activity Tracking</h3>
+                      <p className="text-sm text-gray-500">
+                        Control how your activities are tracked and recorded
+                      </p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={activityTracking}
+                        onChange={() => setActivityTracking(!activityTracking)}
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                    </label>
+                  </div>
+                  <div
+                    className={`space-y-4 ${
+                      !activityTracking ? "opacity-50" : ""
+                    }`}
+                  >
+                    <h4 className="text-sm font-medium text-gray-700">
+                      Data Retention Period
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      <button
+                        onClick={() => setDataRetention("30days")}
+                        disabled={!activityTracking}
+                        className={`px-3 py-2 text-sm rounded-md border ${
+                          dataRetention === "30days"
+                            ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                            : "border-gray-300 text-gray-600"
+                        }`}
+                      >
+                        30 Days
+                      </button>
+                      <button
+                        onClick={() => setDataRetention("90days")}
+                        disabled={!activityTracking}
+                        className={`px-3 py-2 text-sm rounded-md border ${
+                          dataRetention === "90days"
+                            ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                            : "border-gray-300 text-gray-600"
+                        }`}
+                      >
+                        90 Days
+                      </button>
+                      <button
+                        onClick={() => setDataRetention("1year")}
+                        disabled={!activityTracking}
+                        className={`px-3 py-2 text-sm rounded-md border ${
+                          dataRetention === "1year"
+                            ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                            : "border-gray-300 text-gray-600"
+                        }`}
+                      >
+                        1 Year
+                      </button>
+                      <button
+                        onClick={() => setDataRetention("forever")}
+                        disabled={!activityTracking}
+                        className={`px-3 py-2 text-sm rounded-md border ${
+                          dataRetention === "forever"
+                            ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                            : "border-gray-300 text-gray-600"
+                        }`}
+                      >
+                        Forever
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Data Management Section */}
+                <div className="space-y-4">
+                  <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <div>
+                      <span className="font-medium">Download Your Data</span>
+                      <p className="text-xs text-gray-500">
+                        Export a copy of your personal data
+                      </p>
+                    </div>
+                    <Download className="h-5 w-5 text-gray-600" />
+                  </button>
+
+                  <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <div>
+                      <span className="font-medium text-red-600">
+                        Delete Your Data
+                      </span>
+                      <p className="text-xs text-gray-500">
+                        Remove all your personal data from our servers
+                      </p>
+                    </div>
+                    <Trash2 className="h-5 w-5 text-red-600" />
+                  </button>
+
+                  <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <div>
+                      <span className="font-medium text-red-600">
+                        Delete Account
+                      </span>
+                      <p className="text-xs text-gray-500">
+                        Permanently close your account
+                      </p>
+                    </div>
+                    <UserX className="h-5 w-5 text-red-600" />
+                  </button>
+                </div>
               </div>
             )}
+
             {/* Billing */}
             {activeTab === "billing" && (
               <div className="space-y-6">
@@ -314,6 +546,7 @@ const SettingsPage = () => {
                 </div>
               </div>
             )}
+
             {/* Crypto Wallet */}
             {activeTab === "wallet" && (
               <div className="space-y-6">
@@ -373,5 +606,4 @@ const SettingsPage = () => {
     </div>
   );
 };
-
-export default SettingsPage;
+export default AccountSettingsPage;
