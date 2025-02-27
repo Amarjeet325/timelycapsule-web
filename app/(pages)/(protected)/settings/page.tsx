@@ -490,7 +490,8 @@ const AccountSettingsPage = () => {
                 {/* Data Management Section */}
                 <div className="space-y-4">
                   <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <div>
+                    <div className="flex flex-col text-left ">
+                      Fi
                       <span className="font-medium">Download Your Data</span>
                       <p className="text-xs text-gray-500">
                         Export a copy of your personal data
@@ -500,7 +501,7 @@ const AccountSettingsPage = () => {
                   </button>
 
                   <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <div>
+                    <div className="flex flex-col text-left ">
                       <span className="font-medium text-red-600">
                         Delete Your Data
                       </span>
@@ -512,7 +513,7 @@ const AccountSettingsPage = () => {
                   </button>
 
                   <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <div>
+                    <div className="flex flex-col text-left ">
                       <span className="font-medium text-red-600">
                         Delete Account
                       </span>
