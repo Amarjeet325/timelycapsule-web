@@ -15,6 +15,7 @@ import {
   Moon,
   Sun,
   Mail,
+  Key,
   Globe2,
 } from "lucide-react";
 
@@ -194,7 +195,40 @@ const SettingsPage = () => {
               </div>
             )}
 
-            {activeTab === "security" && <div>Security Content</div>}
+            {/* Security */}
+            {activeTab === "security" && (
+              <div className="space-y-6">
+                <h2 className="text-xl font-semibold mb-4">
+                  Security Settings
+                </h2>
+                <div className="space-y-4">
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Key className="h-5 w-5 text-gray-600" />
+                      <h3 className="font-medium">Two-Factor Authentication</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Add an extra layer of security to your account by enabling
+                      two-factor authentication.
+                    </p>
+                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                      Enable 2FA
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                      <span className="font-medium">Change Password</span>
+                      <Shield className="h-5 w-5 text-gray-600" />
+                    </button>
+                    <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                      <span className="font-medium">Active Sessions</span>
+                      <Shield className="h-5 w-5 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
             {activeTab === "privacy" && <div>Privacy Content</div>}
             {activeTab === "billing" && <div>Billing Content</div>}
             {activeTab === "wallet" && <div>Wallet Content</div>}
