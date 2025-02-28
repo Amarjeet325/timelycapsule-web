@@ -60,7 +60,7 @@ export default function FAQPage() {
       </div>
 
       <div className="mt-10 text-center border rounded-lg px-2 py-4">
-        <h2 className="text-xl font-semibold">Still need help?</h2>
+        <h2 className="text-xl font-bold text-black">Still need help?</h2>
         <p className="text-gray-600">
           Our support team is always ready to assist you.
         </p>
