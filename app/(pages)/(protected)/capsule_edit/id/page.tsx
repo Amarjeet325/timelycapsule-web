@@ -25,7 +25,6 @@ function CapsuleEdit() {
   useEffect(() => {
     if (id) {
       console.log("Editing capsule with ID:", id);
-      // TODO: Fetch capsule data using the id
     }
   }, [id]);
 
@@ -98,7 +97,6 @@ function CapsuleEdit() {
         </div>
       </div>
 
-      {/* Status Bar */}
       <div className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-md">
         <div className="flex items-center">
           <Clock className="h-5 w-5 text-amber-500 mr-2" />
@@ -110,7 +108,6 @@ function CapsuleEdit() {
         </div>
       </div>
 
-      {/* Tabs */}
       <div className="flex border-b border-gray-200">
         <button
           onClick={() => setActiveTab("content")}
@@ -154,7 +151,6 @@ function CapsuleEdit() {
         </button>
       </div>
 
-      {/* Content Tab */}
       {activeTab === "content" && (
         <div className="bg-white rounded-xl shadow-md p-6 space-y-6">
           <div>
@@ -255,7 +251,6 @@ function CapsuleEdit() {
         </div>
       )}
 
-      {/* Settings Tab */}
       {activeTab === "settings" && (
         <div className="bg-white rounded-xl shadow-md p-6 space-y-6">
           <div>
@@ -373,7 +368,6 @@ function CapsuleEdit() {
         </div>
       )}
 
-      {/* Recipients Tab */}
       {activeTab === "recipients" && (
         <div className="bg-white rounded-xl shadow-md p-6 space-y-6">
           <div>
@@ -463,7 +457,6 @@ function CapsuleEdit() {
         </div>
       )}
 
-      {/* Template Tab */}
       {activeTab === "template" && (
         <div className="bg-white rounded-xl shadow-md p-6 space-y-6">
           <div>
