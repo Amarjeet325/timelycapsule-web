@@ -19,7 +19,7 @@ const space_Mono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "TimelyCapsule",
-  description: "Your digital time capsule",
+  description: "Unleash the power of timed messaging.",
 };
 
 export default function RootLayout({
@@ -29,11 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${space_Mono.variable} antialiased`}>
+      <body
+        className={`${manrope.variable} ${space_Mono.variable} antialiased`}
+      >
         <SessionProvider>
-          <QueryProvider>
-            {children}
-          </QueryProvider>
+          <QueryProvider>{children}</QueryProvider>
         </SessionProvider>
       </body>
     </html>
