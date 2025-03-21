@@ -11,7 +11,7 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
   width?: string | number;
-  variant?: "user" | "admin"; // Supports different authentication sections
+  variant?: "user" | "admin";
 }
 
 export default function Input({
@@ -27,10 +27,9 @@ export default function Input({
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";
 
-  // Define styling for user and admin authentication variants
   const variantStyles = {
-    user: "border-[#F2F2F2] text-[#78778B] focus:ring-blue-500",
-    admin: "border-gray-400 text-gray-700 focus:ring-gray-600",
+    user: "border-[#F2F2F2] text-[#78778B] focus:ring-[#78778B]",
+    admin: "border-gray-400 text-gray-700 focus:ring-[$78778B]",
   };
 
   return (
