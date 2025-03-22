@@ -1,5 +1,6 @@
 "use client";
 
+import Sidebar from "@/components/sidebar/Sidebar";
 /* import { usePathname } from 'next/navigation'; */
 
 export default function PagesLayout({
@@ -13,5 +14,10 @@ export default function PagesLayout({
     return <>{children}</>;
   } */
 
-  return <div>{children}</div>;
+  return (
+    <div className="flex">
+      <Sidebar />
+      {children}
+    </div>
+  );
 }
