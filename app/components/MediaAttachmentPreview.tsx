@@ -104,7 +104,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
   // Reset states if source changes
   useEffect(() => {
     setError(false);
-    setLoading(true);
+    setLoading(false);
     setIsPlaying(false);
   }, [src]);
 
@@ -115,7 +115,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
       setActualDuration(mediaRef.current.duration || duration);
     }
   };
-
+  console.log(mediaType);
   useEffect(() => {
     if (mediaType === "video") {
       setLoading(false);
@@ -170,12 +170,14 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
 
   if (mediaType === "image") {
     return (
-      <div className={`relative overflow-hidden rounded-lg ${className}`}>
+      <div
+        className={`relative overflow-hidden rounded-lg w-[342px] h-[210px] ${className}`}
+      >
         <Image
           src={src}
           alt={alt}
           fill
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
           onLoad={handleLoad}
           onError={handleError}
         />
