@@ -14,7 +14,6 @@ const formatUnveilDate = (date: Date): string => {
 
   const ordinalDay = `${day}${getOrdinalSuffix(day)}`;
 
-  // Format the time as HH:mm (24-hour format)
   const formattedTime = `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
 
   return `${ordinalDay} ${month} ${year} ${formattedTime}`;
