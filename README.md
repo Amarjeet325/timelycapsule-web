@@ -54,15 +54,15 @@ To run the project locally, follow these steps:
 
    The application will be available at http://localhost:3000.
 
-   sign in with 
+   sign in with
    username: user@example.com
    password: password
 
-6. \_Build the docker image
+5. \_Build the docker image
    docker build -t timelycapsule-web .
    If it fails the first time, check your internet connection and try again
 
-7. Run the docker container:
+6. Run the docker container:
    docker run -d -p 3000:3000 timelycapsule-web
 
 ## Contribution Guidelines

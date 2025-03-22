@@ -22,7 +22,7 @@ export default function AuthLayout({
             alt="Character illustration"
             fill
             className="hidden md:block"
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: "contain" }}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
 
@@ -98,7 +98,7 @@ export default function AuthLayout({
           src={rocket}
           alt="Rocket illustration"
           fill
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: "contain" }}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
