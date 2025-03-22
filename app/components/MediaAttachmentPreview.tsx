@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -115,7 +116,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
       setActualDuration(mediaRef.current.duration || duration);
     }
   };
-  console.log(mediaType);
+  console.log(mediaType, error);
   useEffect(() => {
     if (mediaType === "video") {
       setLoading(false);
@@ -247,9 +248,11 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
 
   if (mediaType === "audio") {
     return (
-      <div className={`bg-gray-100 p-4 rounded-lg ${className}`}>
+      <div
+        className={`bg-gray-100 p-4  w-[342px] h-[210px] flex justify-center rounded-lg ${className}`}
+      >
         <div className="flex flex-col items-center">
-          <div className="w-full mb-4">
+          <div className="w-full h-1/2 my-auto  ">
             <div
               className="bg-gray-200 p-4 rounded-full mb-2 cursor-pointer mx-auto w-16 h-16 flex items-center justify-center"
               onClick={togglePlay}
