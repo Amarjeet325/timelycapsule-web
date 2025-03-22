@@ -47,10 +47,8 @@ const sampleCapsules = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="p-8 w-full">
       <h1>Home Page</h1>
-
-
       <div className="flex gap-2 px-5">
         <MediaAttachmentPreview
           src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -76,7 +74,7 @@ export default function HomePage() {
       </div>
 
       <CapsuleTable data={sampleCapsules} rowCount={3} component="History" />
-
+    </div>
     </>
   );
 }
