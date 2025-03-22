@@ -14,7 +14,7 @@ interface InputProps {
   variant?: "user" | "admin";
 }
 
-export default function Input({
+export default function AuthInput({
   label,
   type,
   placeholder,
@@ -28,7 +28,7 @@ export default function Input({
   const isPassword = type === "password";
 
   const variantStyles = {
-    user: "border-[#F2F2F2] text-[#78778B] focus:ring-[#78778B]",
+    user: "border-[#F2F2F2] rounded-[10px] text-[#78778B] focus:ring-[#78778B]",
     admin: "border-gray-400 text-gray-700 focus:ring-[$78778B]",
   };
 
