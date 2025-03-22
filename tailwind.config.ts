@@ -33,6 +33,11 @@ const config: Config = {
       fontFamily: {
         manrope: ["var(--font-manrope)"],
         spaceMono: ["var(--font-space-mono)"],
+        kumbhSans: ["Kumbh Sans", "sans-serif"],
+        caveat: ["Caveat", "cursive"],
+        inter: ["Inter", "sans-serif"],
+        dmSans: ["DM Sans", "sans-serif"],
+        ibmPlexSans: ["IBM Plex Sans", "sans-serif"],
       },
       backgroundImage: {
         "auth-background":
