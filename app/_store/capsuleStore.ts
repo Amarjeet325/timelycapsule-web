@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 export interface Capsule {
   id: string;
@@ -18,24 +18,25 @@ interface CapsuleState {
   deleteCapsule: (id: string) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
-} 
+}
 
 export const useCapsuleStore = create<CapsuleState>((set) => ({
   capsules: [],
   loading: false,
   error: null,
   setCapsules: (capsules) => set({ capsules }),
-  addCapsule: (capsule) => set((state) => ({
-    capsules: [...state.capsules, capsule]
-  })),
-  updateCapsule: (capsule) => set((state) => ({
-    capsules: state.capsules.map(c => 
-      c.id === capsule.id ? capsule : c
-    )
-  })),
-  deleteCapsule: (id) => set((state) => ({
-    capsules: state.capsules.filter(c => c.id !== id)
-  })),
+  addCapsule: (capsule) =>
+    set((state) => ({
+      capsules: [...state.capsules, capsule],
+    })),
+  updateCapsule: (capsule) =>
+    set((state) => ({
+      capsules: state.capsules.map((c) => (c.id === capsule.id ? capsule : c)),
+    })),
+  deleteCapsule: (id) =>
+    set((state) => ({
+      capsules: state.capsules.filter((c) => c.id !== id),
+    })),
   setLoading: (loading) => set({ loading }),
-  setError: (error) => set({ error })
-})) 
+  setError: (error) => set({ error }),
+}));

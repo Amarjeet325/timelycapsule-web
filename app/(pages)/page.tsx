@@ -47,9 +47,9 @@ const sampleCapsules = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="p-8 w-full">
       <h1>Home Page</h1>
       <CapsuleTable data={sampleCapsules} rowCount={3} component="History" />
-    </>
+    </div>
   );
 }
