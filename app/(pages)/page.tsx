@@ -1,9 +1,5 @@
-"use client";
+import ConnectWallet from "../components/wallet-connection/connect-wallet";
 
-export default function HomePage() {
-  return (
-    <>
-      <h1>Home Page</h1>
-    </>
-  );
+export default function Home() {
+  return <ConnectWallet />;
 }
