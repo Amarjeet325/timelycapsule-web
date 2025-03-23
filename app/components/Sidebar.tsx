@@ -31,7 +31,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 h-screen flex flex-col bg-white border-r border-gray-100">
+    <aside className="w-[100%] hidden h-screen md:flex flex-col bg-white border-r border-gray-100">
       {/* Logo */}
       <div className="p-6 mb-4">
         <Link href="/" className="flex flex-col">
@@ -48,22 +48,22 @@ export default function Sidebar() {
               key={item.name}
               href={item.href}
               className={clsx(
-                "flex items-center px-4 py-3 rounded-md transition-colors",
+                "flex items-center px-4 py-3 rounded-md transition-colors ",
                 isActive
-                  ? "bg-green-500 text-white"
-                  : "text-gray-400 hover:bg-gray-100",
+                  ? "bg-[#48BB78CC] text-[#1B212D]"
+                  : "text-[#929EAE] hover:bg-gray-100",
               )}
             >
               <item.icon
                 className={clsx(
                   "mr-3 h-5 w-5",
-                  isActive ? "text-white" : "text-gray-400",
+                  isActive ? "text-[#1B212D]" : "text-gray-400",
                 )}
               />
               <span
                 className={clsx(
-                  "font-medium",
-                  isActive ? "text-white" : "text-gray-400",
+                  "font-semibold font-kumbhSans",
+                  isActive ? "text-[#1B212D]" : "text-gray-400",
                 )}
               >
                 {item.name}

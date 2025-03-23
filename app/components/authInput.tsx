@@ -14,6 +14,26 @@ interface InputProps {
   variant?: "user" | "admin";
 }
 
+/* Kumbh Sans
+Weigh
+t
+500
+Siz
+e
+14px */
+
+/* 
+Inter
+Weigh
+t
+400
+Siz
+e
+16px
+Line
+ height
+28.16px */
+
 export default function AuthInput({
   label,
   type,
@@ -28,8 +48,9 @@ export default function AuthInput({
   const isPassword = type === "password";
 
   const variantStyles = {
-    user: "border-[#F2F2F2] rounded-[10px] text-[#78778B] focus:ring-[#78778B]",
-    admin: "border-gray-400 text-gray-700 focus:ring-[$78778B]",
+    user: "border-[#F2F2F2] rounded-[10px] font-kumbhSans text-[#78778B]  text-[16px] leading-[28.16px] font-[400]",
+    admin:
+      "border-gray-400 text-gray-700 font-inter  font-kumbhSans text-[16px] leading-[28.16px] font-[400] text-[#616161]",
   };
 
   return (
@@ -44,7 +65,7 @@ export default function AuthInput({
       }}
     >
       <label
-        className={`text-[14px] font-[500] font-["Kumbh_Sans"] ${variant == "user" ? "p-[10px]" : "p-[4px_10px]"}`}
+        className={`text-[14px] font-[500] font-inter ${variant == "user" ? "p-[10px]" : "p-[14px_10px] text-[#424242] font-kumbhSans font-[500] text-[16px] leading-[18.06px]"}`}
       >
         {label}
       </label>
@@ -54,7 +75,7 @@ export default function AuthInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={`p-[10px] ${variant == "user" ? "border" : ""} placeholder:text-[14px] focus:outline-none focus:ring-2 w-full ${variantStyles[variant]}`}
+          className={`p-[10px] ${variant == "user" ? "border" : ""} placeholder:text-[16px] font-kumbhSans focus:outline-none focus:ring-offset-0 focus:ring-0 w-full ${variantStyles[variant]}`}
         />
         {isPassword && (
           <button
