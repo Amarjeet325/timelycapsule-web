@@ -53,6 +53,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [actualDuration, setActualDuration] = useState<number>(duration);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [showImageModal, setShowImageModal] = useState<boolean>(false);
 
   const mediaRef = useRef<HTMLVideoElement | HTMLAudioElement | null>(null);
   const uniqueVidId = useRef<string>(
@@ -79,6 +80,24 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
       setIsPlaying(!isPlaying);
     }
   };
+
+  const toggleImageModal = () => {
+    setShowImageModal(!showImageModal);
+  };
+
+  // Close modal when pressing escape key
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && showImageModal) {
+        setShowImageModal(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscKey);
+    return () => {
+      window.removeEventListener("keydown", handleEscKey);
+    };
+  }, [showImageModal]);
 
   useEffect(() => {
     const mediaElement = mediaRef.current;
@@ -107,6 +126,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
     setError(false);
     setLoading(false);
     setIsPlaying(false);
+    setShowImageModal(false);
   }, [src]);
 
   const handleLoad = () => {
@@ -116,12 +136,25 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
       setActualDuration(mediaRef.current.duration || duration);
     }
   };
-  console.log(mediaType, error);
+
   useEffect(() => {
     if (mediaType === "video") {
       setLoading(false);
     }
   }, [mediaType, alt, src]);
+
+  // Handle body scroll locking when modal is open
+  useEffect(() => {
+    if (showImageModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showImageModal]);
 
   if (mediaType === "unknown" || error) {
     return (
@@ -171,18 +204,69 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
 
   if (mediaType === "image") {
     return (
-      <div
-        className={`relative overflow-hidden rounded-lg w-[342px] h-[210px] ${className}`}
-      >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="w-full h-full object-cover"
-          onLoad={handleLoad}
-          onError={handleError}
-        />
-      </div>
+      <>
+        <div
+          className={`relative overflow-hidden rounded-lg w-[342px] h-[210px] cursor-pointer ${className}`}
+          onClick={toggleImageModal}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="w-full h-full object-cover"
+            onLoad={handleLoad}
+            onError={handleError}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-opacity flex items-center justify-center">
+            <div className="opacity-0 hover:opacity-100 text-white text-sm bg-black bg-opacity-50 py-1 px-3 rounded">
+              Click to view full image
+            </div>
+          </div>
+        </div>
+
+        {/* Full-screen Image Modal */}
+        {showImageModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+            <div className="relative w-full h-full flex flex-col items-center justify-center">
+              {/* Close button */}
+              <button
+                className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
+                onClick={toggleImageModal}
+                aria-label="Close fullscreen view"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              {/* Image container with max height/width constraints */}
+              <div className="relative max-w-screen-lg max-h-screen p-4">
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={1200}
+                  height={900}
+                  className="object-contain max-h-screen"
+                />
+              </div>
+
+              {/* Image caption/alt text */}
+              <div className="text-white mt-2 text-center max-w-lg">{alt}</div>
+            </div>
+          </div>
+        )}
+      </>
     );
   }
 
@@ -209,7 +293,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
             className="absolute inset-0 bg-black bg-opacity-20 z-10 flex flex-col justify-between"
             onClick={togglePlay}
           >
-            <div className=" mt-[17.33px] mr-[12px] text-white text-[11.56px] font-medium text-sm ml-auto">
+            <div className="mt-[17.33px] mr-[12px] text-white text-[11.56px] font-medium text-sm ml-auto">
               {formatDuration(actualDuration)}
             </div>
             <div className="m-auto">
@@ -237,7 +321,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
                 </svg>
               </div>
             </div>
-            <div className="w-full text-center pb-4 text-white text-sm mb-[29.59px] font-medium">
+            <div className="w-full text-center pb-4 text-white mb-[29.59px] font-medium font-ibmPlexSans text-[11.71px] leading-[100%]">
               Click to Play Video attachment
             </div>
           </div>
@@ -249,10 +333,10 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
   if (mediaType === "audio") {
     return (
       <div
-        className={`bg-gray-100 p-4  w-[342px] h-[210px] flex justify-center rounded-lg ${className}`}
+        className={`bg-gray-100 p-4 w-[342px] h-[210px] flex justify-center rounded-lg ${className}`}
       >
         <div className="flex flex-col items-center">
-          <div className="w-full h-1/2 my-auto  ">
+          <div className="w-full h-1/2 my-auto">
             <div
               className="bg-gray-200 p-4 rounded-full mb-2 cursor-pointer mx-auto w-16 h-16 flex items-center justify-center"
               onClick={togglePlay}

@@ -12,6 +12,22 @@ export interface CapsuleCardProps {
   imageSrc?: string;
 }
 
+/* Fon
+t
+Kumbh Sans
+Weigh
+t
+700
+Siz
+e
+9.92px
+Line
+ height
+100%
+Letter
+ spacing
+0% */
+
 const CapsuleCard = ({
   name,
   description,
@@ -36,7 +52,7 @@ const CapsuleCard = ({
   const config = statusConfig[status];
 
   return (
-    <div className="flex flex-col border-[0.71px] border-[#EEEEEEEE] w-full max-w-[250px] rounded-[9.41px]">
+    <div className="flex  flex-col border-[0.71px] border-[#EEEEEEEE] w-full max-w-[250px] rounded-[9.41px]">
       <div className="border-[0.71px] border-[#EEEEEEEE] overflow-hidden rounded-t-[9.41px]">
         <Image
           src={imageSrc}
@@ -49,31 +65,39 @@ const CapsuleCard = ({
       <div className="flex flex-col gap-3 rounded-[9.41px] border-[0.71px] border-[#EEEEEEEE] p-3">
         <div className="flex justify-between flex-col gap-3">
           <p
-            className="flex items-center gap-1.5 text-[10px]"
+            className="flex items-center gap-1.5 text-[10px] font-kumbhSans"
             style={{ color: config.color }}
           >
             <span
               className="h-2.5 w-2.5 rounded-full"
               style={{ backgroundColor: config.color }}
             ></span>
-            <span className="font-semibold">{config.label}</span>
+            <span className="font-bold font-dmSans uppercase text-[10px]">
+              {config.label}
+            </span>
           </p>
           <div className="flex flex-col gap-3 text-[#212121]">
             <div className="gap-1.5 flex flex-col">
-              <p className="font-bold text-[10px]">{name}</p>
-              <p className="text-[8px] font-light">{description}</p>
+              <p className="font-bold text-normal font-kumbhSans font-bold leading-[100%]">
+                {name}
+              </p>
+              <p className="text-[#212121] font-dmSans leading-[100%] font-normal line-clamp-3">
+                {description}
+              </p>
             </div>
-            <p className="font-mono text-[8px]">
-              <span>Created </span>
-              <span>{timeCreated}</span>
-            </p>
+            <span className="w-full flex justify-end items-center gap-2 font-black text-[10px] mt-1 leading-[100%] uppercase font-dmSans text-[#363A3F]">
+              <span className="">Created:</span>
+              <span className="text-left">{timeCreated}</span>
+            </span>
           </div>
         </div>
-        <div className="flex items-center justify-between">
-          <span className="text-[8px] font-bold">{unveilTime}</span>
+        <div className="flex items-center justify-between my-1">
+          <span className="text-[10px] font-bold font-dmSans text-[#212121] uppercase">
+            {unveilTime}
+          </span>
           <a
             href={capsuleLink}
-            className="inline-flex shadow-md p-2 rounded w-full max-w-[88px] items-center justify-center gap-2 whitespace-nowrap text-[10px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-r from-[#37945E] to-[#34D399] text-white hover:bg-gradient-to-br hover:from-[#37945E] hover:to-[#34D399]"
+            className="font-kumbhSans inline-flex shadow-md p-2 rounded w-full max-w-[88px] items-center justify-center gap-2 whitespace-nowrap text-[10px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-r from-[#37945E] to-[#34D399] text-white hover:bg-gradient-to-br hover:from-[#37945E] hover:to-[#34D399]"
           >
             Open Capsule
           </a>
