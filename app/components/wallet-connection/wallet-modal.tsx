@@ -1,42 +1,37 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import type { ModalState } from "./types";
-import { ConnectedView } from "./modal-components/connected-view";
-import { ConnectingView } from "./modal-components/connecting-view";
+import { AddressView } from "./modal-components/address-view";
 import { SelectView } from "./modal-components/select-view";
+import { ConnectingView } from "./modal-components/connecting-view";
+import { ConnectedView } from "./modal-components/connected-view";
+import { useWallet } from "./wallet-context";
 
-interface WalletModalProps {
-  modalState: ModalState;
-  selectedNetwork: string;
-  selectedWallet: string | null;
-  walletAddress: string | null;
-  isNetworkDropdownOpen: boolean;
-  isWalletDropdownOpen: boolean;
-  isCopied: boolean;
-  onClose: () => void;
-  toggleNetworkDropdown: () => void;
-  toggleWalletDropdown: () => void;
-  onWalletSelect: (wallet: string) => void;
-  onDisconnect: () => void;
-  onCopyAddress: () => void;
-}
+export function WalletModal() {
+  const {
+    state,
+    closeModal,
+    toggleNetworkDropdown,
+    toggleWalletDropdown,
+    selectNetwork,
+    handleWalletSelect,
+    handleDisconnect,
+    copyToClipboard,
+    updateInputAddress,
+    connectWithAddress,
+  } = useWallet();
 
-export function WalletModal({
-  modalState,
-  selectedNetwork,
-  selectedWallet,
-  walletAddress,
-  isNetworkDropdownOpen,
-  isWalletDropdownOpen,
-  isCopied,
-  onClose,
-  toggleNetworkDropdown,
-  toggleWalletDropdown,
-  onWalletSelect,
-  onDisconnect,
-  onCopyAddress,
-}: WalletModalProps) {
+  const {
+    modalState,
+    selectedNetwork,
+    selectedWallet,
+    walletAddress,
+    isNetworkDropdownOpen,
+    isWalletDropdownOpen,
+    isCopied,
+    inputAddress,
+  } = state;
+
   if (modalState === "closed") {
     return null;
   }
@@ -48,7 +43,7 @@ export function WalletModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-        onClick={onClose}
+        onClick={closeModal}
       >
         {/* Modal Content */}
         <motion.div
@@ -59,6 +54,15 @@ export function WalletModal({
           className="bg-white w-full max-w-md rounded-3xl overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
+          {modalState === "address" && (
+            <AddressView
+              inputAddress={inputAddress}
+              onAddressChange={updateInputAddress}
+              onConnect={connectWithAddress}
+              onClose={closeModal}
+            />
+          )}
+
           {modalState === "select" && (
             <SelectView
               selectedNetwork={selectedNetwork}
@@ -67,21 +71,24 @@ export function WalletModal({
               isWalletDropdownOpen={isWalletDropdownOpen}
               toggleNetworkDropdown={toggleNetworkDropdown}
               toggleWalletDropdown={toggleWalletDropdown}
-              onWalletSelect={onWalletSelect}
-              onClose={onClose}
+              onNetworkSelect={selectNetwork}
+              onWalletSelect={handleWalletSelect}
+              onClose={closeModal}
             />
           )}
 
-          {modalState === "connecting" && <ConnectingView onClose={onClose} />}
+          {modalState === "connecting" && (
+            <ConnectingView onClose={closeModal} />
+          )}
 
           {modalState === "connected" && (
             <ConnectedView
               walletAddress={walletAddress}
               selectedWallet={selectedWallet}
               isCopied={isCopied}
-              onCopyAddress={onCopyAddress}
-              onDisconnect={onDisconnect}
-              onClose={onClose}
+              onCopyAddress={copyToClipboard}
+              onDisconnect={handleDisconnect}
+              onClose={closeModal}
             />
           )}
         </motion.div>

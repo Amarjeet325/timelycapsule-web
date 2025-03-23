@@ -1,4 +1,9 @@
-export type ModalState = "closed" | "select" | "connecting" | "connected";
+export type ModalState =
+  | "closed"
+  | "address"
+  | "select"
+  | "connecting"
+  | "connected";
 
 export interface NetworkInfo {
   name: string;
@@ -19,4 +24,5 @@ export interface WalletConnectionState {
   isNetworkDropdownOpen: boolean;
   isWalletDropdownOpen: boolean;
   isCopied: boolean;
+  inputAddress: string;
 }

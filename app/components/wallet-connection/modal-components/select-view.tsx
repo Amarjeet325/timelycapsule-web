@@ -11,6 +11,7 @@ interface SelectViewProps {
   isWalletDropdownOpen: boolean;
   toggleNetworkDropdown: () => void;
   toggleWalletDropdown: () => void;
+  onNetworkSelect: (network: string) => void;
   onWalletSelect: (wallet: string) => void;
   onClose: () => void;
 }
@@ -22,13 +23,16 @@ export function SelectView({
   isWalletDropdownOpen,
   toggleNetworkDropdown,
   toggleWalletDropdown,
+  onNetworkSelect,
   onWalletSelect,
   onClose,
 }: SelectViewProps) {
   return (
     <>
       <div className="flex justify-between items-center p-6 border-b border-gray-200">
-        <h2 className="text-2xl font-bold text-gray-900">Connect Wallet</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          Select Network & Wallet
+        </h2>
         <button
           onClick={onClose}
           className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -43,6 +47,7 @@ export function SelectView({
           selectedNetwork={selectedNetwork}
           isNetworkDropdownOpen={isNetworkDropdownOpen}
           toggleNetworkDropdown={toggleNetworkDropdown}
+          onNetworkSelect={onNetworkSelect}
         />
 
         {/* Wallet Selection */}

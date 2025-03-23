@@ -2,18 +2,20 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { getNetworkInfo } from "../wallet-data";
+import { getNetworkInfo, networks } from "../wallet-data";
 
 interface NetworkSelectorProps {
   selectedNetwork: string;
   isNetworkDropdownOpen: boolean;
   toggleNetworkDropdown: () => void;
+  onNetworkSelect: (network: string) => void;
 }
 
 export function NetworkSelector({
   selectedNetwork,
   isNetworkDropdownOpen,
   toggleNetworkDropdown,
+  onNetworkSelect,
 }: NetworkSelectorProps) {
   const networkInfo = getNetworkInfo(selectedNetwork);
 
@@ -43,6 +45,30 @@ export function NetworkSelector({
         </div>
         <span className="text-2xl text-gray-800">{networkInfo.name}</span>
       </div>
+
+      {isNetworkDropdownOpen && (
+        <div className="mt-2 border border-gray-200 rounded-lg overflow-hidden">
+          {Object.keys(networks).map((network) => (
+            <div
+              key={network}
+              className={`p-3 flex items-center cursor-pointer hover:bg-gray-50 ${
+                selectedNetwork === network ? "bg-gray-100" : ""
+              }`}
+              onClick={() => onNetworkSelect(network)}
+            >
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                <Image
+                  src={getNetworkInfo(network).logo || "/placeholder.svg"}
+                  alt={network}
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <span className="text-lg text-gray-800">{network}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

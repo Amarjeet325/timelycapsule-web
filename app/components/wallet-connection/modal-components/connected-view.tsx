@@ -34,7 +34,7 @@ export function ConnectedView({
       <div className="p-6">
         <div className="bg-gray-50 rounded-xl p-6 mb-6">
           <div className="flex items-center">
-            <div className="w-[40px] h-6 rounded-full bg-gradient-to-r from-orange-400 to-red-500 mr-4"></div>
+            <div className="w-[40px] h-[40px] rounded-full bg-gradient-to-r from-orange-400 to-red-500 mr-4"></div>
             <span className="text-lg text-gray-800">{walletAddress}</span>
           </div>
 
@@ -49,7 +49,7 @@ export function ConnectedView({
 
         <div className="flex justify-between items-center">
           <p className="text-lg text-gray-800">
-            Connected with {selectedWallet?.toLowerCase()}
+            Connected with {selectedWallet?.toLowerCase() || "metamask"}
           </p>
           <button
             onClick={onDisconnect}
