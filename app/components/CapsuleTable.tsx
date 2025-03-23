@@ -63,7 +63,7 @@ const CapsuleTable: React.FC<CapsuleTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {data.slice(0, showAll ? data.length : rowCount).map((capsule) => (
+          {data.slice(0, rowCount).map((capsule) => (
             <tr
               key={capsule.id}
               className="border-b border-gray-100 text-[#1B212D] text-xs"

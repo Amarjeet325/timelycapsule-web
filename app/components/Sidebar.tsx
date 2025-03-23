@@ -15,7 +15,7 @@ import Logo from "@/public/images/logo-timelycapsule.png";
 import Image from "next/image";
 
 const navItems = [
-  { name: "Dashboard", href: "/", icon: House },
+  { name: "Dashboard", href: "/dashboard", icon: House },
   { name: "Capsules", href: "/capsules", icon: TrendingUp },
   { name: "Subscriptions", href: "/subscriptions", icon: CreditCard },
   { name: "My Wallets", href: "/wallets", icon: Wallet },
@@ -31,7 +31,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[15%] hidden h-screen md:flex flex-col bg-white border-r border-gray-100">
+    <aside className="w-[100%] hidden h-screen md:flex flex-col bg-white border-r border-gray-100">
       {/* Logo */}
       <div className="p-6 mb-4">
         <Link href="/" className="flex flex-col">
