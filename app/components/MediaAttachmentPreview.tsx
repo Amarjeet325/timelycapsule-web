@@ -206,7 +206,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
     return (
       <>
         <div
-          className={`relative overflow-hidden rounded-lg w-[342px] h-[210px] cursor-pointer ${className}`}
+          className={`relative overflow-hidden rounded-lg w-full h-[270px] cursor-pointer ${className}`}
           onClick={toggleImageModal}
         >
           <Image
