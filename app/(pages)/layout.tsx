@@ -5,5 +5,5 @@ export default function PagesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="flex">{children}</div>;
+  return <>{children}</>;
 }
