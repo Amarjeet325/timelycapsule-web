@@ -37,7 +37,8 @@ export default function NotFound() {
           </h1>
 
           <p className="text-gray-600 font-normal text-base">
-            Looks like this page is missing! Let&apos;s get you back on track.
+            Looks like this page is missing! <br className="flex md:hidden" />{" "}
+            Let&apos;s get you back on track.
           </p>
         </div>
 
