@@ -2,7 +2,7 @@
 
 export default function HomePage() {
   return (
-    <div className="p-8 w-full">
+    <div className="p-8 w-full h-screen">
       <h1>Home Page</h1>
     </div>
   );
