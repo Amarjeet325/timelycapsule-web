@@ -1,36 +1,42 @@
 "use client";
 
-interface GradientButtonProps {
+import cn from "classnames";
+
+interface ButtonProps {
   label: string;
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   color?: string;
+  gradient?: "t" | "tr" | "r" | "br" | "b" | "bl" | "l" | "tl";
+  outline?: boolean;
 }
 
-export function GradientButton({
+export default function Button({
   label,
   onClick,
   className = "",
   disabled = false,
   type = "button",
-  color,
-}: GradientButtonProps) {
-  // Determine the background style based on whether a single color is provided
-  const backgroundStyle = color
-    ? { background: color }
-    : { background: "linear-gradient(to right, #48BB78, #215537)" };
-
+  color = "primary",
+  outline = false,
+  gradient,
+}: ButtonProps) {
   return (
     <button
-      className={`w-full py-3 px-4 rounded-full font-medium text-center text-white transition-all 
-      ${disabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:opacity-95 active:scale-[0.98]"}
-      ${className}`}
-      style={{
-        ...backgroundStyle,
-        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
-      }}
+      className={cn(
+        "w-full px-4 rounded-xl font-semibold text-center  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px]",
+        { [`border border-${color}`]: outline || !gradient },
+        {
+          [generateBackgroundColorClassname()]: !outline,
+          "text-white": !outline,
+          "text-black": outline,
+          "opacity-60 cursor-not-allowed": disabled,
+          "cursor-pointer hover:opacity-95 active:scale-[0.98]": !disabled,
+        },
+        className,
+      )}
       onClick={onClick}
       disabled={disabled}
       type={type}
@@ -38,4 +44,16 @@ export function GradientButton({
       {label}
     </button>
   );
+
+  function generateBackgroundColorClassname() {
+    const parts: string[] = ["bg"];
+
+    if (gradient) {
+      parts.push(`gradient-to-${gradient}`);
+    }
+
+    parts.push(color);
+
+    return parts.join("-");
+  }
 }
