@@ -273,7 +273,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
   if (mediaType === "video") {
     return (
       <div
-        className={`relative overflow-hidden rounded-lg w-[342px] h-[210px] ${className}`}
+        className={`relative overflow-hidden rounded-lg  h-[270px] ${className}`}
       >
         <video
           ref={mediaRef as React.RefObject<HTMLVideoElement>}
@@ -333,7 +333,7 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
   if (mediaType === "audio") {
     return (
       <div
-        className={`bg-gray-100 p-4 w-[342px] h-[210px] flex justify-center rounded-lg ${className}`}
+        className={`bg-gray-100 p-4  h-[270px] flex justify-center rounded-lg ${className}`}
       >
         <div className="flex flex-col items-center">
           <div className="w-full h-1/2 my-auto">
@@ -391,7 +391,6 @@ const MediaAttachmentPreview: React.FC<MediaAttachmentPreviewProps> = ({
     );
   }
 
-  // This should never be reached due to the previous checks
   return null;
 };
 
