@@ -2,45 +2,33 @@
 
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import * as z from "zod";
+import { Field, ErrorMessage } from "formik";
+
+// Validation schemas
+export const emailSchema = z.string().email("Invalid email address");
+export const passwordSchema = z
+  .string()
+  .min(8, "Password must be at least 8 characters")
+  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+  .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+  .regex(/[0-9]/, "Password must contain at least one number")
+  .regex(/[!@#$%^&*]/, "Password must contain at least one special character");
 
 interface InputProps {
   label: string;
+  name: string;
   type: "email" | "password";
   placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: string;
   width?: string | number;
   variant?: "user" | "admin";
 }
 
-/* Kumbh Sans
-Weigh
-t
-500
-Siz
-e
-14px */
-
-/* 
-Inter
-Weigh
-t
-400
-Siz
-e
-16px
-Line
- height
-28.16px */
-
 export default function AuthInput({
   label,
+  name,
   type,
   placeholder,
-  value,
-  onChange,
-  error,
   width,
   variant = "user",
 }: InputProps) {
@@ -48,9 +36,9 @@ export default function AuthInput({
   const isPassword = type === "password";
 
   const variantStyles = {
-    user: "border-[#F2F2F2] rounded-[10px] font-kumbhSans text-[#78778B]  text-[16px] leading-[28.16px] font-[400]",
+    user: "border-[#F2F2F2] rounded-[10px] font-kumbhSans text-[#78778B] text-[16px] leading-[28.16px] font-[400]",
     admin:
-      "border-gray-400 text-gray-700 font-inter  font-kumbhSans text-[16px] leading-[28.16px] font-[400] text-[#616161]",
+      "border-gray-400 text-gray-700 font-inter font-kumbhSans text-[16px] leading-[28.16px] font-[400] text-[#616161]",
   };
 
   return (
@@ -65,17 +53,21 @@ export default function AuthInput({
       }}
     >
       <label
+        htmlFor={name}
         className={`text-[14px] font-[500] font-inter ${variant == "user" ? "p-[10px]" : "p-[14px_10px] text-[#424242] font-kumbhSans font-[500] text-[16px] leading-[18.06px]"}`}
       >
         {label}
       </label>
       <div className="relative w-full">
-        <input
+        <Field
+          id={name}
+          name={name}
           type={isPassword && showPassword ? "text" : type}
           placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`p-[10px] ${variant == "user" ? "border" : ""} placeholder:text-[16px] font-kumbhSans focus:outline-none focus:ring-offset-0 focus:ring-0 w-full ${variantStyles[variant]}`}
+          className={`p-[10px] ${variant == "user" ? "border" : ""} 
+            placeholder:text-[16px] font-kumbhSans focus:outline-none 
+            focus:ring-offset-0 focus:ring-0 w-full 
+            ${variantStyles[variant]}`}
         />
         {isPassword && (
           <button
@@ -87,7 +79,11 @@ export default function AuthInput({
           </button>
         )}
       </div>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      <ErrorMessage
+        name={name}
+        component="p"
+        className="text-red-500 text-sm mt-1"
+      />
     </div>
   );
 }
