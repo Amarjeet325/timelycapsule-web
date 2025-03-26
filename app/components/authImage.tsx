@@ -24,7 +24,7 @@ const AuthImage: React.FC<AuthImageProps> = ({
   capsuleImage,
 }) => {
   return (
-    <div className={` w-[45%] ${backgroundClass} relative`}>
+    <div className={`w-[45%] ${backgroundClass} relative hidden md:block`}>
       <Image
         src={mainImage.src}
         alt={mainImage.alt}

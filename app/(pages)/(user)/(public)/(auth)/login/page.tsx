@@ -121,7 +121,7 @@ const Login = () => {
                     disabled={isSubmitting}
                   />
 
-                  <div className="text-center mt-4">
+                  <div className=" text-center mt-4">
                     <span className="text-[14px] text-[#78778B] font-kumbhSans">
                       Don't have an account?{" "}
                       <a href="#" className="text-[#1A3C34] hover:underline">
