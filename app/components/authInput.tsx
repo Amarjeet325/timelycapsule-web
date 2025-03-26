@@ -22,6 +22,7 @@ interface InputProps {
   placeholder: string;
   width?: string | number;
   variant?: "user" | "admin";
+  className?: string;
 }
 
 export default function AuthInput({
