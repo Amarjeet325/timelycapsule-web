@@ -2,7 +2,6 @@
 
 import { Formik, Form, FormikHelpers } from "formik";
 import AuthInput from "@/app/components/authInput";
-import Button from "@/app/components/Button";
 import { z } from "zod";
 
 interface PasswordFormValues {
@@ -78,12 +77,13 @@ const NewPasswordForm = ({
             placeholder="Confirm your new password"
           />
 
-          <Button
-            label="Done"
+          <button
             disabled={isSubmitting}
             type="submit"
-            gradient="bl"
-          />
+            className="w-full px-4 rounded-xl font-semibold text-center text-[#ffffff]  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px] bg-gradient-to-r from-[#48BB78] to-[#215537]   "
+          >
+            Done{" "}
+          </button>
         </Form>
       )}
     </Formik>

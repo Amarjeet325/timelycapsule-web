@@ -2,7 +2,6 @@
 
 import { Formik, Form, FormikHelpers } from "formik";
 import AuthInput, { emailSchema } from "@/app/components/authInput";
-import Button from "@/app/components/Button";
 import { z } from "zod";
 
 interface EmailFormValues {
@@ -57,7 +56,13 @@ const EmailForm = ({ onSubmit }: { onSubmit: (email: string) => void }) => {
             placeholder="Enter your email"
           />
 
-          <Button label="Submit" disabled={isSubmitting} type="submit" />
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            className="w-full px-4 rounded-xl font-semibold text-center text-[#ffffff]  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px] bg-gradient-to-r from-[#48BB78] to-[#215537]   "
+          >
+            Submit{" "}
+          </button>
         </Form>
       )}
     </Formik>
