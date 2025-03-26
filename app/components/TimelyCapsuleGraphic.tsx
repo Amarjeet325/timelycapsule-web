@@ -15,7 +15,7 @@ export default function TimedMessaging() {
       </div>
 
       <div className="w-full h-1/5 bg-green-900 flex items-center justify-center text-white text-center p-6">
-        <h2 className="text-lg font-bold">
+        <h2 className="text-xl font-bold m-3">
           Unleash the Power of Timed Messaging
         </h2>
       </div>
