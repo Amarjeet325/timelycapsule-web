@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="h-16 sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-3 border-b bg-white">
+    <header className="h-[100px] sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-3 border-b bg-white">
       <div className="flex items-center">
         <button
           onClick={toggleMobileMenu}

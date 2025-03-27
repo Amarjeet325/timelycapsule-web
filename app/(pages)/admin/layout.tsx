@@ -45,7 +45,7 @@ export default function AdminLayout({
   };
 
   return (
-    <div className="mx-auto max-w-7xl">
+    <div className="px-8">
       <div className="flex  gap-6">
         <Sidebar />
         <div className="flex-1 flex flex-col">
