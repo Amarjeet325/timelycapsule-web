@@ -64,6 +64,7 @@ export default function AuthInput({
           name={name}
           type={isPassword && showPassword ? "text" : type}
           placeholder={placeholder}
+          z
           className={`p-[10px] ${variant == "user" ? "border" : ""} 
             placeholder:text-[16px] font-kumbhSans focus:outline-none 
             focus:ring-offset-0 focus:ring-0 w-full 
