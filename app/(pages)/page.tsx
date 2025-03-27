@@ -1,9 +1,10 @@
 "use client";
+import TimeCapsuleGraphic from "../components/TimelyCapsuleGraphic";
 
 export default function HomePage() {
   return (
-    <div className="p-8 w-full h-screen">
-      <h1>Home Page</h1>
+    <div className="w-full h-screen">
+      <TimeCapsuleGraphic />
     </div>
   );
 }
