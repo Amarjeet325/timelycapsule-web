@@ -24,15 +24,18 @@ const AuthImage: React.FC<AuthImageProps> = ({
   capsuleImage,
 }) => {
   return (
-    <div className={`w-[45%] ${backgroundClass} relative hidden md:block`}>
+    <div className={`hidden md:w-[45%] md:flex  md:flex-col md:h-screen `}>
+      <div className="relative w-full h-screen overflow-hidden">
       <Image
         src={mainImage.src}
         alt={mainImage.alt}
         fill
-        className="mb-12 pb-14 object-cover"
-        priority
-      />
-      <div className="absolute bottom-0  left-0 right-0 p-8 text-white bg-[#1A3C34] text-center z-10">
+        className=" object-cover"
+        />
+        </div>
+      
+      <div className=" py-8 lg:px-8 text-white bg-[#1A3C34] text-center mt-[-10%] z-10 h-[20%] ">
+        <div className="relative w-full">
         <h3 className="text-[20px] pb-3 font-bold font-kumbhSans">
           {title.split('\\n').map((line, i) => (
             <React.Fragment key={i}>
@@ -41,19 +44,18 @@ const AuthImage: React.FC<AuthImageProps> = ({
             </React.Fragment>
           ))}
         </h3>
-      </div>
 
       {capsuleImage && (
-        <div className="absolute bottom-12 right-4 z-20">
-          <Image
-            src={capsuleImage.src}
-            alt={capsuleImage.alt}
-            width={100}
-            height={100}
-            className="object-contain"
-          />
-        </div>
+        <Image
+        src={capsuleImage.src}
+        alt={capsuleImage.alt}
+        width={100}
+        height={100}
+        className="object-contain absolute md:right-[2%] lg:right-[15%] bottom-[40%] z-20"
+        />
       )}
+      </div>
+      </div>
     </div>
   );
 };

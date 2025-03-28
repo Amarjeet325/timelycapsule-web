@@ -47,12 +47,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-[#FAFAFA] py-[3rem] px-4 md:px-[14rem]">
-      <div className="flex flex-col md:flex-row w-full m-auto max-w-[900px] max-h-[550px] bg-white rounded-[20px] shadow-lg overflow-hidden">
+    <div className=" min-h-svh flex items-center justify-center h-screen bg-[#FAFAFA] w-full">
+      {/* <div className="flex flex-col md:flex-row w-full mx-auto max-w-[80%] bg-white rounded-[20px] shadow-lg overflow-hidden"> */}
         {/* Login Form Section */}
-        <div className="w-full mb-44 md:w-[55%] px-6 md:pl-20  md:pr-24 py-6 flex flex-col justify-start">
+        <div className="w-full md:w-[55%] px-6 md:pl-20 h-screen md:pr-36 pt-14 flex flex-col justify-start">
           {/* Logo */}
-          <div className="mb-6 md:mb-10">
+          <div className="sm:mt-3 md:mt-6 ">
             <Image
               src="/images/logo-timelycapsule.png"
               alt="Time Capsule"
@@ -115,7 +115,7 @@ const Login = () => {
                   <Button
                     type="submit"
                     label="Sign in"
-                    className={`mt-6 w-full text-center !bg-gradient-to-r from-[#48BB78] to-[#1B212D] text-white rounded-md py-3 font-kumbhSans font-medium ${
+                    className={`mt-6 w-full text-center !bg-gradient-to-r from-[#48BB78] to-[#1B212D] text-white rounded-md font-kumbhSans font-medium ${
                       isSubmitting ? 'opacity-50 cursor-not-allowed' : 'Coinbase Wrapped Bitcoin'
                     } transition-colors`}
                     disabled={isSubmitting}
@@ -158,7 +158,7 @@ const Login = () => {
          
         />
       </div>
-    </div>
+    // </div>
   );
 };
 
