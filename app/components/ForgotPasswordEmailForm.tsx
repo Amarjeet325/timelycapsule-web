@@ -8,7 +8,11 @@ interface EmailFormValues {
   email: string;
 }
 
-const EmailForm = ({ onSubmit }: { onSubmit: (email: string) => void }) => {
+const ForgotPasswordForm = ({
+  onSubmit,
+}: {
+  onSubmit: (email: string) => void;
+}) => {
   const validateForm = (values: EmailFormValues) => {
     const errors: Partial<Record<keyof EmailFormValues, string>> = {};
 
@@ -69,4 +73,4 @@ const EmailForm = ({ onSubmit }: { onSubmit: (email: string) => void }) => {
   );
 };
 
-export default EmailForm;
+export default ForgotPasswordForm;

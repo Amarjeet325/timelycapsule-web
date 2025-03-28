@@ -1,16 +1,17 @@
 "use client";
 
-import ForgotPasswordForm from "@/app/components/ForgotPasswordEmailForm";
+import ResetPasswordForm from "@/app/components/ResetPasswordForm";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function Page() {
   const [formData, setFormData] = useState({
-    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleEmailSubmit = (email: string) => {
-    setFormData((prev) => ({ ...prev, email }));
+  const handlePasswordSubmit = (password: string, confirmPassword: string) => {
+    setFormData((prev) => ({ ...prev, password, confirmPassword }));
     console.log("Final Form Data:", formData);
   };
 
@@ -27,7 +28,7 @@ export default function Page() {
           />
         </div>
 
-        <ForgotPasswordForm onSubmit={handleEmailSubmit} />
+        <ResetPasswordForm onSubmit={handlePasswordSubmit} />
       </section>
 
       {/* Right Section - Image & Text */}

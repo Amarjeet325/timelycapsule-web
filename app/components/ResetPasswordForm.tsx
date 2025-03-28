@@ -19,7 +19,7 @@ const passwordSchema = z
     path: ["confirmPassword"],
   });
 
-const NewPasswordForm = ({
+const ResetPasswordForm = ({
   onSubmit,
 }: {
   onSubmit: (password: string, confirmPassword: string) => void;
@@ -90,4 +90,4 @@ const NewPasswordForm = ({
   );
 };
 
-export default NewPasswordForm;
+export default ResetPasswordForm;
