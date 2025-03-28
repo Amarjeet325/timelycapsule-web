@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export type CapsuleStatus = "sent" | "received";
+export type CapsuleStatus = "sent" | "received" | "public";
 
 export interface CapsuleCardProps {
   name: string;
@@ -40,19 +40,24 @@ const CapsuleCard = ({
   const statusConfig: Record<CapsuleStatus, { color: string; label: string }> =
     {
       sent: {
-        color: "#246038",
+        color: "#1E90FF",
+
         label: "Sent",
       },
       received: {
-        color: "#E98000",
+        color: "#34D399",
         label: "Received",
+      },
+      public: {
+        color: "#E98000",
+        label: "Public",
       },
     };
 
   const config = statusConfig[status];
 
   return (
-    <div className="flex  flex-col border-[0.71px] border-[#EEEEEEEE] w-full max-w-[250px] rounded-[9.41px]">
+    <div className="flex  flex-col border-[0.71px] border-[#EEEEEEEE] w-full max-w-[300px] md:max-w-[350px] rounded-[9.41px]">
       <div className="border-[0.71px] border-[#EEEEEEEE] overflow-hidden rounded-t-[9.41px]">
         <Image
           src={imageSrc}
@@ -85,9 +90,9 @@ const CapsuleCard = ({
                 {description}
               </p>
             </div>
-            <span className="w-full flex justify-end items-center gap-2 font-black text-[10px] mt-1 leading-[100%] uppercase font-dmSans text-[#363A3F]">
+            <span className="w-full flex justify-start items-center gap-2 font-black text-[10px] mt-1 leading-[100%] uppercase font-dmSans text-[#363A3F]">
               <span className="">Created:</span>
-              <span className="text-left">{timeCreated}</span>
+              <span className="">{timeCreated}</span>
             </span>
           </div>
         </div>
