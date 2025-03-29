@@ -1,7 +1,7 @@
-import React from "react";
+import Capsules from "@/app/components/admin-component/Capsules";
 
 const page = () => {
-  return <div>page</div>;
+  return <Capsules />;
 };
 
 export default page;

@@ -1,7 +1,7 @@
-import React from "react";
+import UsersPage from "@/app/components/admin-component/Users";
 
 const page = () => {
-  return <div>page under construction</div>;
+  return <UsersPage />;
 };
 
 export default page;

@@ -31,7 +31,7 @@ const CapsuleTable: React.FC<CapsuleTableProps> = ({
     <div className="w-full mr-auto ml-5 bg-white border border-[#F5F5F5] rounded-lg p-4">
       {/* Table Header */}
       <div className="flex justify-between items-center px-4 pb-2">
-        <h2 className="text-lg font-semibold text-[#1B212D] size-[18px] font-semibold font-kumbhSans">
+        <h2 className="text-lg text-[#1B212D] size-[18px] font-semibold font-kumbhSans">
           {component}
         </h2>
         {data.length > rowCount && (

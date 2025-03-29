@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import {
   House,
   TrendingUp,
@@ -68,7 +69,7 @@ export default function Sidebar({
       {/* Sidebar */}
       <aside
         className={clsx(
-          "fixed h-screen bg-[#1A202C] border-r border-gray-100 transition-all duration-300 z-50",
+          "fixed h-screen bg-[#1A202C]  border-gray-100 transition-all duration-300 z-50",
           isCollapsed ? "w-16" : "w-64",
           isMobileMenuOpen ? "left-0" : "-left-full md:left-0",
         )}
