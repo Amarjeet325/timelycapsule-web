@@ -78,7 +78,7 @@ const CapsuleCard = ({
           </p>
           <div className="flex flex-col gap-3 text-[#212121]">
             <div className="gap-1.5 flex flex-col">
-              <p className="font-bold text-normal font-kumbhSans font-bold leading-[100%]">
+              <p className="text-normal font-kumbhSans font-bold leading-[100%]">
                 {name}
               </p>
               <p className="text-[#212121] font-dmSans leading-[100%] font-normal line-clamp-3">

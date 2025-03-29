@@ -3,7 +3,7 @@
 import cn from "classnames";
 
 interface ButtonProps {
-  label: string;
+  label?: string;
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
@@ -11,6 +11,8 @@ interface ButtonProps {
   color?: string;
   gradient?: "t" | "tr" | "r" | "br" | "b" | "bl" | "l" | "tl";
   outline?: boolean;
+  variant?: string;
+  size?: string;
 }
 
 export default function Button({
@@ -22,11 +24,13 @@ export default function Button({
   color = "primary",
   outline = false,
   gradient,
+  size = "sm",
+  
 }: ButtonProps) {
   return (
     <button
       className={cn(
-        "w-full px-4 rounded-xl font-semibold text-center  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px]",
+        "w-1/3 px-4 rounded-xl font-semibold text-center  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px]",
         { [`border border-${color}`]: outline || !gradient },
         {
           [generateBackgroundColorClassname()]: !outline,
@@ -40,6 +44,7 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      
     >
       {label}
     </button>

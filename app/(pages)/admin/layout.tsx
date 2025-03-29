@@ -1,6 +1,6 @@
 "use client";
-import Sidebar from "@/app/components/admin/Sidebar";
-import Navbar from "@/app/components/admin/Navbar";
+import Sidebar from "@/app/components/admin-component/Sidebar";
+import Navbar from "@/app/components/admin-component/Navbar";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import type React from "react";

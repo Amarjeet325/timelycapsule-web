@@ -70,7 +70,7 @@ export default function Sidebar({
       {/* Sidebar */}
       <aside
         className={clsx(
-          "fixed h-screen bg-white border-r border-gray-100 transition-all duration-300 z-50",
+          "fixed h-screen bg-white  border-gray-100 transition-all duration-300 z-50",
           isCollapsed ? "w-16" : "w-64",
           isMobileMenuOpen ? "left-0" : "-left-full md:left-0",
         )}
