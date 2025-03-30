@@ -12,6 +12,11 @@ const meta = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
+    docs: {
+      description: {
+        component: "Standard personnalized Button",
+      },
+    },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -55,5 +60,20 @@ export const Outline: Story = {
   args: {
     label: "Button",
     outline: true,
+  },
+};
+
+export const Bigger: Story = {
+  args: {
+    label: "Button",
+
+    size: "lg",
+  },
+};
+Bigger.parameters = {
+  docs: {
+    description: {
+      story: "Bigger button with size lg",
+    },
   },
 };

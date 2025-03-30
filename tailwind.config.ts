@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { PluginUtils } from "tailwindcss/types/config";
+import type { PluginUtils } from "tailwindcss/types/config";
 
 const gradientVariations = {
   "to-t": "to top",
@@ -23,13 +23,19 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/globals.css",
+    "./stories/**/*.tsx",
   ],
   theme: {
     extend: {
       colors: {
         primary: "#48BB78",
+        "primary-darker": "#48BB78",
         "primary-dark": "#215537",
+        "primary-bg": "#34D39926",
         "primary-light": "#48BB7880",
+
+        field: "#F7FBFD",
+        "field-outline": "#F1F1F3",
       },
       fontFamily: {
         kumbhSans: ["var(--font-kumbh-sans)"],
@@ -59,6 +65,13 @@ const config: Config = {
             {},
           ),
         };
+      },
+      flexGrow: {
+        2: "2",
+        3: "3",
+        4: "4",
+        5: "5",
+        6: "6",
       },
     },
   },
