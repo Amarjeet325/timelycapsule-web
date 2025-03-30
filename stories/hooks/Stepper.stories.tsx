@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react"
 
-import Stepper from "@/app/_hooks/useStepper/Stepper";
+import Stepper from "@/app/_hooks/useStepper/Stepper"
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -24,15 +24,15 @@ const meta = {
   },
 
   // Use `fn` to spy on the
-} as Meta<typeof Stepper>;
+} as Meta<typeof Stepper>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
     steps: 3,
-    step: 1,
+    step: 2,
   },
-};
+}

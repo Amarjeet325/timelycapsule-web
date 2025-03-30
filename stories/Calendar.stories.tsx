@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import type { Meta, StoryObj } from "@storybook/react"
+import { action } from "@storybook/addon-actions"
 
-import Calendar from "@/app/components/Calendar";
+import Calendar from "@/app/components/Calendar"
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -22,23 +22,37 @@ const meta = {
   argTypes: {},
 
   args: { onSelect: action(`Selected date`) },
-} satisfies Meta<typeof Calendar>;
+} satisfies Meta<typeof Calendar>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {},
-};
+}
 
 export const WithTimeSelector: Story = {
   args: {
     withTime: true,
   },
-};
+}
 
 export const WithValidateButton: Story = {
   args: {
     validateButton: true,
   },
-};
+}
+
+const tomorrow = new Date()
+tomorrow.setDate(tomorrow.getDate() + 1)
+tomorrow.setHours(14)
+tomorrow.setMinutes(25)
+tomorrow.setSeconds(59)
+tomorrow.setMilliseconds(0)
+
+export const DefaultValue: Story = {
+  args: {
+    withTime: true,
+    defaultValue: tomorrow,
+  },
+}

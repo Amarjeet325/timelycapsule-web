@@ -2,10 +2,20 @@ import { create } from "zustand";
 
 export interface Capsule {
   id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  openAt: string;
+  name: string;
+  senderName: string;
+  deliveryOption: string;
+  openDate: Date;
+
+  message?: string;
+  funds?: number;
+  currency?: string;
+  medias?: File[];
+  shareLink?: string;
+  recipientEmail?: string;
+  password?: string;
+  type?: string;
+  endDate?: Date;
 }
 
 interface CapsuleState {
