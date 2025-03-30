@@ -7,6 +7,7 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+        boolean: /completed/i,
       },
     },
   },

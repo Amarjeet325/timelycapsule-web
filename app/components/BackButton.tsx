@@ -12,6 +12,7 @@ const BackButton: React.FC<BackButtonProps> = ({ variant, buttonAction }) => {
     <button
       onClick={buttonAction}
       className="flex items-center justify-center w-32 gap-2"
+      type="button"
     >
       <svgs.BackIcon2 />
       <p className="font-kumbhSans text-base font-normal text-[#111111] text-nowrap border-b-2 border-[#111111]">
@@ -22,6 +23,7 @@ const BackButton: React.FC<BackButtonProps> = ({ variant, buttonAction }) => {
     <button
       onClick={buttonAction}
       className="flex flex-col items-start justify-center w-32"
+      type="button"
     >
       <svgs.BackIcon />
       <div className="flex items-center justify-start ml-4">
