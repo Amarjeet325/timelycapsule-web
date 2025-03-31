@@ -1,46 +1,32 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { InputHTMLAttributes, useEffect, useState } from "react";
-import cn from "classnames";
-import {
-  FieldValues,
-  Path,
-  useController,
-  UseControllerProps,
-  useFormContext,
-} from "react-hook-form";
-import Calendar from "@/app/components/Calendar";
+import { InputHTMLAttributes, useEffect, useState } from "react"
+import cn from "classnames"
+import { FieldValues, Path, useController, UseControllerProps, useFormContext } from "react-hook-form"
+import Calendar from "@/app/components/Calendar"
 import {
   CommonFields,
   extractBaseFieldProps,
   getFieldClassname,
   getFieldContainerClass,
   withDefaultProps,
-} from "./_helpers";
-import withBaseField from "./_withBaseField";
+} from "./_helpers"
+import withBaseField from "./_withBaseField"
 
 type DateTimePickerProps = CommonFields &
   InputHTMLAttributes<HTMLInputElement> & {
-    withTime?: boolean;
-  };
+    withTime?: boolean
+  }
 
-function DatePicker<T extends FieldValues>(
-  props: DateTimePickerProps & UseControllerProps<T>,
-) {
-  const {
-    className,
-    withTime = false,
-    ...otherProps
-  } = withDefaultProps(props);
-  const { getValues, setValue } = useFormContext();
-  const initialDate = getValues(props.name);
-  const [startDate, setStartDate] = useState(
-    initialDate ? new Date(initialDate) : new Date(),
-  );
-  const [displayCalendar, setDisplayCalendar] = useState(false);
+function DatePicker<T extends FieldValues>(props: DateTimePickerProps & UseControllerProps<T>) {
+  const { className, withTime = false, ...otherProps } = withDefaultProps(props)
+  const { getValues, setValue } = useFormContext()
+  const initialDate = getInitialDate()
+  const [startDate, setStartDate] = useState(initialDate)
+  const [displayCalendar, setDisplayCalendar] = useState(false)
 
   useEffect(() => {
-    setDate(startDate);
-  }, [withTime]);
+    setDate(startDate)
+  }, [startDate, withTime])
 
   return (
     <div className={cn("w-full", getFieldContainerClass(props))}>
@@ -48,11 +34,7 @@ function DatePicker<T extends FieldValues>(
         value={formatDate(startDate)}
         {...extractBaseFieldProps(otherProps)}
         onFocus={() => setDisplayCalendar(true)}
-        className={cn(
-          className,
-          getFieldClassname(props),
-          "rounded-none border-0 h-full, w-full",
-        )}
+        className={cn(className, getFieldClassname(props), "rounded-none border-0 h-full, w-full")}
         readOnly
       />
       <div
@@ -61,31 +43,38 @@ function DatePicker<T extends FieldValues>(
         })}
       >
         <Calendar
+          defaultValue={initialDate}
           onSelect={(date) => date && setDate(date)}
           validateButton
           withTime={withTime}
         />
       </div>
     </div>
-  );
+  )
+
+  function getInitialDate() {
+    const formDate = getValues(props.name)
+
+    return formDate ? new Date(formDate) : new Date()
+  }
 
   function setDate(date: Date | undefined) {
     if (!date) {
-      return;
+      return
     }
-    setStartDate(date);
-    setValue(props.name, date as Path<unknown>);
-    setDisplayCalendar(false);
+    setStartDate(date)
+    setValue(props.name, date as Path<unknown>)
+    setDisplayCalendar(false)
   }
 
   function formatDate(date: Date): string {
     if (withTime) {
-      return date.toLocaleString().substring(0, 16);
+      return date.toLocaleString().substring(0, 16)
     }
 
-    return date.toLocaleString().split(" ")[0];
+    return date.toLocaleString().split(" ")[0]
   }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default withBaseField(DatePicker<any>);
+export default withBaseField(DatePicker<any>)

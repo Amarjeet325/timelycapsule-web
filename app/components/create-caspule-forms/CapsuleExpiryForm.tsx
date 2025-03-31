@@ -1,6 +1,6 @@
-import Select from "@/app/components/form/Select";
-import DateTimePicker from "@/app/components/form/DatePicker";
-import Input from "@/app/components/form/Input";
+import Select from "@/app/components/form/Select"
+import DateTimePicker from "@/app/components/form/DatePicker"
+import Input from "@/app/components/form/Input"
 
 export default function CapsuleExpiryForm() {
   return (
@@ -14,11 +14,7 @@ export default function CapsuleExpiryForm() {
           Private: "private",
         }}
       />
-      <DateTimePicker
-        name="accessibilityDate"
-        label="Accessibility Date"
-        withTime
-      />
+      <DateTimePicker name="openDate" label="Accessibility Date" withTime />
       <Input
         type="number"
         name="expiration"
@@ -39,5 +35,5 @@ export default function CapsuleExpiryForm() {
         }
       />
     </div>
-  );
+  )
 }
