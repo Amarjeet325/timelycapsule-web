@@ -1,22 +1,24 @@
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z, ZodType } from "zod"
-import { Capsule } from "@/app/_store/capsuleStore"
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z, ZodType } from "zod";
+import { Capsule } from "@/app/_store/capsuleStore";
 
 export interface CreateCapsuleFormData extends Omit<Capsule, "id"> {
-  expiration?: number
-  "expiration-unit"?: string
-  geotagging?: string
-  "toggle-expiration"?: boolean
-  "toggle-password"?: boolean
+  expiration?: number;
+  "expiration-unit"?: string;
+  geotagging?: string;
+  "toggle-expiration"?: boolean;
+  "toggle-password"?: boolean;
 }
 
-const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleFormData>>> = [
+const CapsuleSchemaSteps: Array<ZodType<Partial<CreateCapsuleFormData>>> = [
   z.object({
     collaborationType: z.enum(["single", "collaborators"]),
   }),
   z.object({
-    collaborators: z.array(z.string().email("Must be a valid email")).optional(),
+    collaborators: z
+      .array(z.string().email("Must be a valid email"))
+      .optional(),
   }),
   z.object({
     name: z.string().nonempty("You must enter a name"),
@@ -57,7 +59,14 @@ const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleFormData>>> = [
       path: ["geotagging"],
     }),
   z.object({}).passthrough(),
-]
+];
+
+const PublicCapsuleSchemaSteps = [
+  CapsuleSchemaSteps[2],
+  CapsuleSchemaSteps[3],
+  CapsuleSchemaSteps[4],
+  CapsuleSchemaSteps[5],
+];
 
 export default function useCreateCapsuleForm(currentStep: number) {
   const form = useForm<CreateCapsuleFormData>({
@@ -69,10 +78,26 @@ export default function useCreateCapsuleForm(currentStep: number) {
       currency: "ETH",
       type: "public",
     },
-    resolver: zodResolver(UserSchemaSteps[currentStep - 1]),
-  })
+    resolver: zodResolver(CapsuleSchemaSteps[currentStep - 1]),
+  });
 
-  return form
+  return form;
 }
 
-export type CreateCapsuleForm = ReturnType<typeof useCreateCapsuleForm>
+export function useCreatePublicCapsuleForm(currentStep: number) {
+  const form = useForm<CreateCapsuleFormData>({
+    mode: "onChange",
+    defaultValues: {
+      collaborators: [],
+      medias: [],
+      "toggle-expiration": true,
+      currency: "ETH",
+      type: "public",
+    },
+    resolver: zodResolver(PublicCapsuleSchemaSteps[currentStep - 1]),
+  });
+
+  return form;
+}
+
+export type CreateCapsuleForm = ReturnType<typeof useCreateCapsuleForm>;
