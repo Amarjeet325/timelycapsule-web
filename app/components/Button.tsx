@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import cn from "classnames"
+import cn from "classnames";
 
 interface ButtonProps {
-  label?: string
-  onClick?: () => void
-  className?: string
-  disabled?: boolean
-  type?: "button" | "submit" | "reset"
-  color?: string
-  gradient?: "t" | "tr" | "r" | "br" | "b" | "bl" | "l" | "tl"
-  outline?: boolean
-  size?: keyof typeof sizeMapping
+  label?: string;
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  color?: string;
+  gradient?: "t" | "tr" | "r" | "br" | "b" | "bl" | "l" | "tl";
+  outline?: boolean;
+  size?: keyof typeof sizeMapping;
 }
 
 const sizeMapping = {
@@ -19,7 +19,7 @@ const sizeMapping = {
   md: "h-[40px] px-[20px]",
   lg: "h-[50px] px-[58px]",
   xl: "h-[60px] px-[72px]",
-}
+};
 
 export default function Button({
   label,
@@ -35,7 +35,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        "rounded-xl font-semibold text-center  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px]",
+        "rounded-xl font-semibold text-center  transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] h-[40px] w-fit",
         sizeMapping[size] || sizeMapping["md"],
         { [`border border-${color}`]: outline || !gradient },
         {
@@ -53,17 +53,17 @@ export default function Button({
     >
       {label}
     </button>
-  )
+  );
 
   function generateBackgroundColorClassname() {
-    const parts: string[] = ["bg"]
+    const parts: string[] = ["bg"];
 
     if (gradient) {
-      parts.push(`gradient-to-${gradient}`)
+      parts.push(`gradient-to-${gradient}`);
     }
 
-    parts.push(color)
+    parts.push(color);
 
-    return parts.join("-")
+    return parts.join("-");
   }
 }

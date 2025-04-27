@@ -38,7 +38,7 @@ export default function withBaseField<
   return wrapper;
 }
 
-function BaseField<T extends FieldValues>(
+export function BaseField<T extends FieldValues>(
   props: BaseFieldProps & UseControllerProps<T>,
 ) {
   const {

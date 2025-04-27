@@ -21,7 +21,7 @@ export default function Stepper({
     <div className={cn("flex flex-col w-[138px]", className)}>
       <div className="text-xs">
         <span>
-          Step {step} of {steps}
+          Step {Math.min(step, steps)} of {steps}
         </span>
         {!!completed && (
           <span className="text-primary-darker font-semibold ml-1">

@@ -1,17 +1,24 @@
-import { useState } from "react"
-import Stepper from "./Stepper"
+import { useState } from "react";
+import Stepper from "./Stepper";
 
-type ManagedStepperProps = Omit<Parameters<typeof Stepper>[0], "step" | "steps" | "completed">
+type ManagedStepperProps = Omit<
+  Parameters<typeof Stepper>[0],
+  "step" | "steps" | "completed"
+>;
 
 interface UseStepperParams {
-  steps: number
-  initStep?: number
-  completed?: boolean
+  steps: number;
+  initStep?: number;
+  completed?: boolean;
 }
 
-export default function useStepper({ steps, completed: initCompleted = false, initStep = 1 }: UseStepperParams) {
-  const [step, setStep] = useState(Math.min(initStep, steps + 1))
-  const [completed, setCompleted] = useState(initCompleted)
+export default function useStepper({
+  steps,
+  completed: initCompleted = false,
+  initStep = 1,
+}: UseStepperParams) {
+  const [step, setStep] = useState(Math.min(initStep, steps + 1));
+  const [completed, setCompleted] = useState(initCompleted);
 
   return {
     previousStep,
@@ -19,22 +26,29 @@ export default function useStepper({ steps, completed: initCompleted = false, in
     step: Math.min(step, steps),
     Stepper: ManagedStepper,
     completed,
+    goToStep: setStep,
+  };
+
+  function previousStep(subSteps = 1) {
+    setCompleted(false);
+    setStep((currentStep) =>
+      currentStep - subSteps <= 1 ? 1 : currentStep - subSteps,
+    );
   }
 
-  function previousStep() {
-    setCompleted(false)
-    setStep((currentStep) => (currentStep <= 2 ? 1 : currentStep - 1))
-  }
-
-  function nextStep() {
+  function nextStep(addedSteps = 1) {
     if (step === steps) {
-      setCompleted(true)
+      setCompleted(true);
     } else {
-      setStep((currentStep) => (currentStep > steps - 1 ? steps : currentStep + 1))
+      setStep((currentStep) =>
+        currentStep > steps - addedSteps ? steps : currentStep + addedSteps,
+      );
     }
   }
 
   function ManagedStepper(props: ManagedStepperProps) {
-    return <Stepper steps={steps} step={step} completed={completed} {...props} />
+    return (
+      <Stepper steps={steps} step={step} completed={completed} {...props} />
+    );
   }
 }

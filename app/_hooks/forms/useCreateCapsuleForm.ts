@@ -1,16 +1,23 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z, ZodType } from "zod";
-import { Capsule } from "@/app/_store/capsuleStore";
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z, ZodType } from "zod"
+import { Capsule } from "@/app/_store/capsuleStore"
 
-export interface CreateCapsuleForm extends Omit<Capsule, "id"> {
-  expiration?: number;
-  "expiration-unit"?: string;
-  "toggle-expiration"?: boolean;
-  "toggle-password"?: boolean;
+export interface CreateCapsuleFormData extends Omit<Capsule, "id"> {
+  expiration?: number
+  "expiration-unit"?: string
+  geotagging?: string
+  "toggle-expiration"?: boolean
+  "toggle-password"?: boolean
 }
 
-const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleForm>>> = [
+const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleFormData>>> = [
+  z.object({
+    collaborationType: z.enum(["single", "collaborators"]),
+  }),
+  z.object({
+    collaborators: z.array(z.string().email("Must be a valid email")).optional(),
+  }),
   z.object({
     name: z.string().nonempty("You must enter a name"),
     senderName: z.string().nonempty("You must enter a name"),
@@ -36,45 +43,36 @@ const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleForm>>> = [
     }),
   z
     .object({
-      deliveryOption: z.string().nonempty("You must choose a delivery option"),
-      shareLink: z
-        .string()
-        .url({ message: "You must generate a link" })
-        .optional(),
-      recipientEmail: z.string().email().optional(),
       password: z.string().optional(),
       "toggle-password": z.boolean().optional().default(false),
-    })
-    .refine((data) => data.deliveryOption !== "email" || data.recipientEmail, {
-      message: "You must define an email",
-      path: ["recipientEmail"],
-    })
-    .refine((data) => data.deliveryOption !== "link" || data.shareLink, {
-      message: "You must generate a link",
-      path: ["shareLink"],
+      geotagging: z.string().optional(),
+      "toggle-geotagging": z.boolean().optional().default(false),
     })
     .refine((data) => data["toggle-password"] !== true || data.password, {
       message: "You must define a password",
       path: ["password"],
+    })
+    .refine((data) => data["toggle-geotagging"] !== true || data.geotagging, {
+      message: "You must define a geolocation",
+      path: ["geotagging"],
     }),
-
   z.object({}).passthrough(),
-];
+]
 
 export default function useCreateCapsuleForm(currentStep: number) {
-  const schemaIndex = Math.min(currentStep - 1, UserSchemaSteps.length - 1);
-
-  const form = useForm<CreateCapsuleForm>({
+  const form = useForm<CreateCapsuleFormData>({
     mode: "onChange",
     defaultValues: {
-      deliveryOption: "link",
+      collaborators: [],
       medias: [],
       "toggle-expiration": true,
       currency: "ETH",
       type: "public",
     },
-    resolver: zodResolver(UserSchemaSteps[schemaIndex]),
-  });
+    resolver: zodResolver(UserSchemaSteps[currentStep - 1]),
+  })
 
-  return form;
+  return form
 }
+
+export type CreateCapsuleForm = ReturnType<typeof useCreateCapsuleForm>
