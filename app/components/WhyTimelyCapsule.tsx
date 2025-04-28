@@ -1,154 +1,120 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../components/Button";
+//import Button from "../components/Button";
 
 export default function WhyTimelyCapsule() {
   return (
-    <section className="w-full py-20 px-8 max-w-7xl mx-auto flex flex-col items-center">
-      {/* Why TimelyCapsule Section */}
-      <div className="text-center mb-20">
-        <h2 className="text-4xl font-bold mb-4">
-          Why Timely<span className="text-green-500">Capsule</span>?
+    <section className="w-full flex flex-col items-center py-20 px-8 max-w-7xl mx-auto">
+      {/* Statistics Section */}
+      <div className="w-full text-center mb-24">
+        <h2 className="text-2xl font-bold mb-12">
+          Thousands Are Using TimelyCapsule
         </h2>
-        <p className="text-gray-600 text-lg">
-          More than just messages — it is moments, memories, and money secured
-          for the future.
-        </p>
-      </div>
-
-      {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-        {/* Feature 1 */}
-        <div className="flex flex-col items-center text-center px-6">
-          <div className="bg-green-100 p-5 rounded-full mb-6">
-            <Image
-              src="/time-icon.svg"
-              alt="Time-Locked Delivery"
-              width={50}
-              height={50}
-            />
+        <div className="flex flex-wrap justify-center gap-12 md:gap-[55px]">
+          {/* Stat 1 */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-4xl font-bold text-black mb-2">500+</h3>
+            <p className="text-gray-500 text-sm">User Trust</p>
           </div>
-          <h3 className="font-semibold text-xl mb-3">Time-Locked Delivery</h3>
-          <p className="text-gray-600 text-base">
-            Schedule a message to unlock on a first birthday, graduation, or
-            milestone—even decades from now.
-          </p>
-        </div>
 
-        {/* Feature 2 */}
-        <div className="flex flex-col items-center text-center px-6">
-          <div className="bg-green-100 p-5 rounded-full mb-6">
-            <Image
-              src="/crypto-icon.svg"
-              alt="Crypto & Cash Gifting"
-              width={50}
-              height={50}
-            />
-          </div>
-          <h3 className="font-semibold text-xl mb-3">Crypto & Cash Gifting</h3>
-          <p className="text-gray-600 text-base">
-            Attach ETH, BTC, or fiat. Recipients claim funds only when the
-            capsule opens—no wallet needed upfront!
-          </p>
-        </div>
+          {/* Divider */}
+          <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
-        {/* Feature 3 */}
-        <div className="flex flex-col items-center text-center px-6">
-          <div className="bg-purple-100 p-5 rounded-full mb-6">
-            <Image
-              src="/security-icon.svg"
-              alt="Hybrid Security"
-              width={50}
-              height={50}
-            />
+          {/* Stat 2 */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-4xl font-bold text-black mb-2">1M+</h3>
+            <p className="text-gray-500 text-sm">Capsule Created</p>
           </div>
-          <h3 className="font-semibold text-xl mb-3">Hybrid Security</h3>
-          <p className="text-gray-600 text-base">
-            Web2 simplicity meets Web3 encryption. Your data stays private;
-            payments stay decentralized.
-          </p>
+
+          {/* Divider */}
+          <div className="hidden md:block w-px h-12 bg-gray-200"></div>
+
+          {/* Stat 3 */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-4xl font-bold text-black mb-2">$10M+</h3>
+            <p className="text-gray-500 text-sm">Crypto Gift Sent</p>
+          </div>
+
+          {/* Divider */}
+          <div className="hidden md:block w-px h-12 bg-gray-200"></div>
+
+          {/* Stat 4 */}
+          <div className="flex flex-col items-center">
+            <h3 className="text-4xl font-bold text-black mb-2">35K+</h3>
+            <p className="text-gray-500 text-sm">Registered Users</p>
+          </div>
         </div>
       </div>
 
-      {/* How It Works Section */}
-      <section className="w-full bg-gray-50 py-20 px-8">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-green-500 text-4xl font-bold mb-4">
-            How It Works
+      {/* Why TimelyCapsule Section */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-16">
+        {/* Left side: Steps */}
+        <div className="flex flex-col gap-8 w-full md:w-1/2">
+          <h2 className="text-4xl font-bold text-black mb-4">
+            Why TimelyCapsule?
           </h2>
-          <p className="text-gray-600 text-lg">Create a Capsule in 3 Steps</p>
-        </div>
+          <p className="text-gray-600 text-lg mb-8">
+            Create a Capsule in 3 Step Simple. Powerful. Magical.
+          </p>
 
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
-          {/* Left Steps */}
-          <div className="flex flex-col gap-8 w-full md:w-1/2">
-            {/* Step 1 */}
-            <div className="flex items-start gap-4 p-6 border-2 border-blue-300 rounded-xl bg-white shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
-                1
-              </div>
-              <div className="text-left">
-                <h4 className="font-bold text-lg mb-2">
-                  Create & Customize Your Capsule
-                </h4>
-                <p className="text-gray-600 text-base">
-                  Upload text, videos, or crypto. Add themes like &quot;Vintage
-                  1990s&quot; or &quot;Space Adventure&quot;.
-                </p>
-              </div>
+          {/* Step 1 */}
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
+              1
             </div>
-
-            {/* Step 2 */}
-            <div className="flex items-start gap-4 p-6">
-              <div className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
-                2
-              </div>
-              <div className="text-left">
-                <h4 className="font-bold text-lg mb-2">
-                  Set the Perfect Unlock Date
-                </h4>
-                <p className="text-gray-600 text-base">
-                  Choose the exact date and time your capsule unlocks. Confirm
-                  with email or wallet.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex items-start gap-4 p-6">
-              <div className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
-                3
-              </div>
-              <div className="text-left">
-                <h4 className="font-bold text-lg mb-2">
-                  Share Your Capsule with Ease
-                </h4>
-                <p className="text-gray-600 text-base">
-                  Share via link, email, or QR code. Recipients can view without
-                  signing up.
-                </p>
-              </div>
+            <div className="text-left">
+              <h4 className="font-bold text-lg mb-2">Time-Locked Delivery</h4>
+              <p className="text-gray-600 text-base">
+                Ligula risus auctor tempus feugiat dolor lacinia nemo pur ipsum
+                purus sapien quaerat a primis viverra tellus vitae dolor ipsum n
+                eque ligula quaerat
+              </p>
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative w-[400px] h-[400px]">
-            <Image
-              src="/steps-image.png"
-              alt="Steps Illustration"
-              width={400}
-              height={400}
-              className="rounded-3xl object-cover shadow-lg"
-            />
+          {/* Step 2 */}
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
+              2
+            </div>
+            <div className="text-left">
+              <h4 className="font-bold text-lg mb-2">Crypto & Cash Gifting</h4>
+              <p className="text-gray-600 text-base">
+                Ligula risus auctor tempus feugiat dolor lacinia nemo pur ipsum
+                purus sapien quaerat a primis viverra tellus vitae dolor ipsum n
+                eque ligula quaerat
+              </p>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold">
+              3
+            </div>
+            <div className="text-left">
+              <h4 className="font-bold text-lg mb-2">Hybrid Security</h4>
+              <p className="text-gray-600 text-base">
+                Ligula risus auctor tempus feugiat dolor lacinia nemo pur ipsum
+                purus sapien quaerat a primis viverra tellus vitae dolor ipsum n
+                eque ligula quaerat
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="mt-16 text-center">
-          <Button label="Sign Up Now" color="green-500" size="lg" />
+        {/* Right side: Image */}
+        <div className="relative w-full md:w-1/2 flex justify-center">
+          <Image
+            src="/capsule-dashboard-placeholder.png" // <-- Use any image you want
+            alt="Dashboard Example"
+            width={500}
+            height={400}
+            className="rounded-2xl object-cover shadow-lg"
+          />
         </div>
-      </section>
+      </div>
     </section>
   );
 }
