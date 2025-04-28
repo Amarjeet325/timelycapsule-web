@@ -1,5 +1,5 @@
 import Input from "@/app/components/form/Input";
-import RichTextField from "../RichText";
+import RichTextField from "@/app/components/RichText";
 import { useFormContext } from "react-hook-form";
 
 export default function CapsuleCreationForm() {
@@ -17,7 +17,7 @@ export default function CapsuleCreationForm() {
       />
       <RichTextField
         message={message}
-        onMessageChange={(value) =>
+        onMessageChange={(value: string) =>
           setValue("message", value, { shouldValidate: true })
         }
       />
