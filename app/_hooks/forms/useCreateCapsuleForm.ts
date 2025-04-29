@@ -1,16 +1,25 @@
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z, ZodType } from "zod"
-import { Capsule } from "@/app/_store/capsuleStore"
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z, ZodType } from "zod";
+import { Capsule } from "@/app/_store/capsuleStore";
 
-export interface CreateCapsuleForm extends Omit<Capsule, "id"> {
-  expiration?: number
-  expirationUnit?: string
-  "toggle-expiration"?: boolean
-  "toggle-password"?: boolean
+export interface CreateCapsuleFormData extends Omit<Capsule, "id"> {
+  expiration?: number;
+  "expiration-unit"?: string;
+  geotagging?: string;
+  "toggle-expiration"?: boolean;
+  "toggle-password"?: boolean;
 }
 
-const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleForm>>> = [
+const CapsuleSchemaSteps: Array<ZodType<Partial<CreateCapsuleFormData>>> = [
+  z.object({
+    collaborationType: z.enum(["single", "collaborators"]),
+  }),
+  z.object({
+    collaborators: z
+      .array(z.string().email("Must be a valid email"))
+      .optional(),
+  }),
   z.object({
     name: z.string().nonempty("You must enter a name"),
     senderName: z.string().nonempty("You must enter a name"),
@@ -27,7 +36,7 @@ const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleForm>>> = [
       type: z.string().optional(),
       openDate: z.date().optional(),
       expiration: z.number().optional(),
-      expirationUnit: z.string().optional(),
+      "expiration-unit": z.string().optional(),
       "toggle-expiration": z.boolean().optional().default(false),
     })
     .refine((data) => data["toggle-expiration"] !== true || data.expiration, {
@@ -36,38 +45,59 @@ const UserSchemaSteps: Array<ZodType<Partial<CreateCapsuleForm>>> = [
     }),
   z
     .object({
-      deliveryOption: z.string().nonempty("You must choose a delivery option"),
-      shareLink: z.string().url({ message: "You must generate a link" }).optional(),
-      recipientEmail: z.string().email().optional(),
       password: z.string().optional(),
       "toggle-password": z.boolean().optional().default(false),
-    })
-    .refine((data) => data.deliveryOption !== "email" || data.recipientEmail, {
-      message: "You must define an email",
-      path: ["recipientEmail"],
-    })
-    .refine((data) => data.deliveryOption !== "link" || data.shareLink, {
-      message: "You must generate a link",
-      path: ["shareLink"],
+      geotagging: z.string().optional(),
+      "toggle-geotagging": z.boolean().optional().default(false),
     })
     .refine((data) => data["toggle-password"] !== true || data.password, {
       message: "You must define a password",
       path: ["password"],
+    })
+    .refine((data) => data["toggle-geotagging"] !== true || data.geotagging, {
+      message: "You must define a geolocation",
+      path: ["geotagging"],
     }),
-]
+  z.object({}).passthrough(),
+];
+
+const PublicCapsuleSchemaSteps = [
+  CapsuleSchemaSteps[2],
+  CapsuleSchemaSteps[3],
+  CapsuleSchemaSteps[4],
+  CapsuleSchemaSteps[5],
+];
 
 export default function useCreateCapsuleForm(currentStep: number) {
-  const form = useForm<CreateCapsuleForm>({
+  const form = useForm<CreateCapsuleFormData>({
     mode: "onChange",
     defaultValues: {
-      deliveryOption: "link",
+      collaborators: [],
       medias: [],
       "toggle-expiration": true,
       currency: "ETH",
       type: "public",
     },
-    resolver: zodResolver(UserSchemaSteps[currentStep - 1]),
-  })
+    resolver: zodResolver(CapsuleSchemaSteps[currentStep - 1]),
+  });
 
-  return form
+  return form;
 }
+
+export function useCreatePublicCapsuleForm(currentStep: number) {
+  const form = useForm<CreateCapsuleFormData>({
+    mode: "onChange",
+    defaultValues: {
+      collaborators: [],
+      medias: [],
+      "toggle-expiration": true,
+      currency: "ETH",
+      type: "public",
+    },
+    resolver: zodResolver(PublicCapsuleSchemaSteps[currentStep - 1]),
+  });
+
+  return form;
+}
+
+export type CreateCapsuleForm = ReturnType<typeof useCreateCapsuleForm>;

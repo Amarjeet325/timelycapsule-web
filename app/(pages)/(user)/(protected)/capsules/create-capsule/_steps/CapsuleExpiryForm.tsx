@@ -1,6 +1,6 @@
-import Select from "@/app/components/form/Select"
-import DateTimePicker from "@/app/components/form/DatePicker"
-import Input from "@/app/components/form/Input"
+import Select from "@/app/components/form/Select";
+import DateTimePicker from "@/app/components/form/DatePicker";
+import Input from "@/app/components/form/Input";
 
 export default function CapsuleExpiryForm() {
   return (
@@ -35,5 +35,5 @@ export default function CapsuleExpiryForm() {
         }
       />
     </div>
-  )
+  );
 }

@@ -41,16 +41,24 @@ To run the project locally, follow these steps:
    cd timelycapsule-web
 
 2. _Install dependencies:_
-   bash
+
+   ```bash
    npm install
+   ```
 
 3. _Set up environment variables:_
 
    - Rename the .env.example to .env.local
 
+   ```bash
+   cp .env.example .env.local
+   ```
+
 4. _Run the development server:_
-   bash
+
+   ```bash
    npm run dev
+   ```
 
    The application will be available at http://localhost:3000.
 
@@ -59,11 +67,29 @@ To run the project locally, follow these steps:
    password: password
 
 5. \_Build the docker image
+
+   ```bash
    docker build -t timelycapsule-web .
+   ```
+
    If it fails the first time, check your internet connection and try again
 
 6. Run the docker container:
+   ```bash
    docker run -d -p 3000:3000 timelycapsule-web
+   ```
+
+## Use storybook
+
+Storybook will help you create UI components without having to rely on a specific page
+
+1. Run storybook
+
+```bash
+npm run storybook
+```
+
+2. Add your component in the `stories` folder
 
 ## Contribution Guidelines
 
