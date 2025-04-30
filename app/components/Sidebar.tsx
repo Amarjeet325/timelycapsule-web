@@ -50,7 +50,7 @@ export default function Sidebar({
     const currentRoute =
       navItems.find((item) => item.href === pathname) ||
       bottomNavItems.find((item) => item.href === pathname);
-    setCurrentRouteName?.(currentRoute?.name || "");
+    setCurrentRouteName(currentRoute?.name || "");
   }, [pathname, setCurrentRouteName]);
 
   const toggleSidebar = () => {
@@ -59,7 +59,6 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Mobile overlay */}
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40 md:hidden"
@@ -67,7 +66,6 @@ export default function Sidebar({
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={clsx(
           "fixed h-screen bg-gray-50 border-r border-gray-100 transition-all duration-300 z-50",
@@ -75,8 +73,7 @@ export default function Sidebar({
           isMobileMenuOpen ? "left-0" : "-left-full md:left-0",
         )}
       >
-        {/* Top section */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center justify-between p-6 h-[5rem] border-b">
           <Link
             href="/"
             className={clsx("flex", isCollapsed && "justify-center")}
@@ -89,7 +86,6 @@ export default function Sidebar({
           </Link>
 
           <div className="flex gap-2">
-            {/* Mobile close button */}
             <button
               onClick={toggleMobileMenu}
               className="md:hidden p-1 rounded-md hover:bg-gray-100"
@@ -97,21 +93,19 @@ export default function Sidebar({
               <X className="h-5 w-5 text-gray-500" />
             </button>
 
-            {/* Desktop collapse button */}
             <button
               onClick={toggleSidebar}
               className="hidden md:block p-1 rounded-md hover:bg-gray-100"
             >
               {isCollapsed ? (
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-5 w-5 text-gray-500" />
               ) : (
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-5 w-5 text-gray-500" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Main navigation */}
         <nav className="flex-1 px-2 py-4 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
@@ -136,7 +130,12 @@ export default function Sidebar({
                   )}
                 />
                 {!isCollapsed && (
-                  <span className="font-semibold font-kumbhSans">
+                  <span
+                    className={clsx(
+                      "font-semibold font-kumbhSans",
+                      isActive ? "text-[#1B212D]" : "text-gray-400",
+                    )}
+                  >
                     {item.name}
                   </span>
                 )}
@@ -145,7 +144,6 @@ export default function Sidebar({
           })}
         </nav>
 
-        {/* Bottom navigation */}
         <div className="px-2 pb-6 mt-auto">
           {bottomNavItems.map((item) => (
             <Link
@@ -160,13 +158,14 @@ export default function Sidebar({
               <item.icon
                 className={clsx("h-5 w-5", isCollapsed ? "mr-0" : "mr-3")}
               />
-              {!isCollapsed && <span className="font-medium">{item.name}</span>}
+              {!isCollapsed && (
+                <span className="font-medium text-gray-400">{item.name}</span>
+              )}
             </Link>
           ))}
         </div>
       </aside>
 
-      {/* Sidebar width spacer */}
       <div
         className={clsx(
           "hidden md:block transition-all duration-300",

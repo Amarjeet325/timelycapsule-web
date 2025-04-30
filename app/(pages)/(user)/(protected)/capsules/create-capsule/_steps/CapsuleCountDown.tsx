@@ -46,7 +46,7 @@ export default function CapsuleCountDown(props: CapsuleCountDownProps) {
   );
 
   function renderDatePassed() {
-    return <div>Already available</div>;
+    return <div>Already visible</div>;
   }
 
   function renderCountDown() {
@@ -61,10 +61,12 @@ export default function CapsuleCountDown(props: CapsuleCountDownProps) {
     const nbMinutes = Math.floor(dateDiffSec / minuteDivider);
     dateDiffSec -= nbMinutes * minuteDivider;
 
+    const daysLabel = nbDays === 1 ? "Day" : "Days";
+
     return (
       <>
         <div className="font-medium text-sm mb-2">
-          {nbDays} Days - {nbHours.toString().padStart(2, "0")} Hr:
+          {nbDays} {daysLabel} - {nbHours.toString().padStart(2, "0")} Hr:
           {nbMinutes.toString().padStart(2, "0")}min:
           {dateDiffSec.toString().padStart(2, "0")}sec
         </div>
