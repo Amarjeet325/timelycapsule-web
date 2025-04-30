@@ -2,8 +2,14 @@ import Image from "next/image";
 
 export default function CapsuleLabSection() {
   return (
-    <section className="w-full px-4 py-16 bg-gradient-to-r from-green-50 to-green-100">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <section
+      className="w-full px-4 py-16"
+      style={{
+        background:
+          "linear-gradient(21.93deg, rgba(52, 211, 153, 0.3) -11.7%, rgba(55, 148, 94, 0.3) 82.12%)",
+      }}
+    >
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-18">
         {/* Text Content */}
         <div className="flex-1 text-center md:text-left">
           <h2 className="text-2xl sm:text-3xl font-bold text-green-600">

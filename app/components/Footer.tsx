@@ -1,6 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaPinterestP,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function FooterSection() {
   return (
@@ -62,35 +67,48 @@ export default function FooterSection() {
       <div className="border-t border-gray-700 mx-auto w-[1197px]"></div>
 
       {/* Social + description */}
-      <div className="max-w-[1197px] mx-auto px-6 flex flex-col items-center text-center gap-6 py-10">
+      <div className="max-w-[1197px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6 py-10">
         {/* Social Icons */}
-        <div className="flex gap-6">
-          <Image
-            src="/pinterest-icon.svg"
-            alt="Pinterest"
-            width={20}
-            height={20}
-          />
-          <Image src="/google-icon.svg" alt="Google" width={20} height={20} />
-          <Image src="/twitter-icon.svg" alt="Twitter" width={20} height={20} />
-          <Image
-            src="/facebook-icon.svg"
-            alt="Facebook"
-            width={20}
-            height={20}
-          />
+        <div className="flex gap-6 text-gray-400">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF size={20} className="hover:text-white transition" />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter size={20} className="hover:text-white transition" />
+          </a>
+          <a
+            href="https://pinterest.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaPinterestP size={20} className="hover:text-white transition" />
+          </a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube size={20} className="hover:text-white transition" />
+          </a>
         </div>
 
         {/* Company Description */}
         <p className="text-sm text-gray-400 max-w-3xl">
           <span className="text-green-500 font-semibold">TimelyCapsule</span> is
           a web-based platform that lets you create, seal, and send time-locked
-          messages, media, or crypto gifts. Whether its a heartfelt note, a
+          messages, media, or crypto gifts. Whether it’s a heartfelt note, a
           surprise video, or a crypto inheritance, we make every moment
           unforgettable.
         </p>
       </div>
-
       {/* Bottom copyright */}
       <div className="text-center text-gray-600 text-xs py-4">
         © 2025 TimelyCapsule. All rights reserved.
